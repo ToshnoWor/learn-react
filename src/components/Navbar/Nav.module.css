@@ -1,0 +1,16 @@
+.nav{
+    grid-area: n;
+    background-color: aqua;
+}
+.item{
+    color: white;
+    text-decoration: none;
+    margin: 5px auto 0px 10px;
+}
+.item:hover{
+    color: gold;
+    cursor: pointer;
+}
+.item:last-child{
+    margin-top: 20px;
+}

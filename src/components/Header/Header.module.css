@@ -1,0 +1,20 @@
+.header{
+  grid-area: h;
+  background-color: green;
+  display: inline-block;
+}
+.header img{
+    width: 67px;
+    float: left;
+}
+.header > div{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 5px;
+}

@@ -1,0 +1,15 @@
+.item{
+    display: flex;
+    margin-top: 30px;
+}
+.item div:nth-child(1){
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin: 5px 20px 0px 0px;
+    background: rgb(255, 187, 0);
+}
+.item div:nth-child(2){
+    font-size: 20px;
+    margin-top: 4px;
+}
