@@ -1,16 +1,30 @@
-.nav{
+.nav {
     grid-area: n;
-    background-color: aqua;
+    background-color: #00586b;
+    padding-bottom: 30px;
 }
+
 .item{
+    margin: 5px 0 0 0;
+}
+
+.item a {
     color: white;
     text-decoration: none;
-    margin: 5px auto 0px 10px;
+    padding: 0 10px 0 10px;
+    height: 100%;
+    width: 100%;
 }
-.item:hover{
+
+.item a:hover {
     color: gold;
     cursor: pointer;
 }
-.item:last-child{
+
+.item:last-child {
     margin-top: 20px;
+}
+
+.item a.activeLink {
+    color: gold;
 }

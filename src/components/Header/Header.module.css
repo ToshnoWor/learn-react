@@ -1,11 +1,12 @@
 .header{
   grid-area: h;
-  background-color: green;
+  background-color: #00586b;
   display: inline-block;
 }
 .header img{
     width: 67px;
     float: left;
+    margin-left: 10px;
 }
 .header > div{
   height: 100%;
@@ -17,4 +18,5 @@
   font-weight: bold;
   font-style: italic;
   letter-spacing: 5px;
+    color: white;
 }
