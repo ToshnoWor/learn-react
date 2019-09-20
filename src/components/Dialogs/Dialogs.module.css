@@ -11,14 +11,15 @@
     color: gold;
 }
 
-.dialog {
-
+.dialog a {
+    text-decoration: none;
+    color: white;
+}
+.dialog a:hover{
+    color: gold;
 }
 
 .messages {
     padding: 10px;
 }
 
-.message {
-
-}

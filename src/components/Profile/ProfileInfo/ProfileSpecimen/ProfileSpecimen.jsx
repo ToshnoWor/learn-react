@@ -23,6 +23,6 @@ const ProfileSpecimen = (props) => {
 			</div>
 		</div>
 	)
-}
+};
 
 export default ProfileSpecimen;
