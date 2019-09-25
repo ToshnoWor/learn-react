@@ -9,11 +9,12 @@ const Dialogs = (props) => {
 	let dialogsElements = props.state.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
 	let messagesElements = props.state.messages.map(message => <Message message={message.message}/>);
 
-	let newPostElement = React.createRef();
+	let newMessageElement = React.createRef();
 
-	let createPost = () => {
-		let text = newPostElement.current.value;
-		alert(text);
+	let createMessage = () => {
+		let text = newMessageElement.current.value;
+		props.addMessage(text);
+		newMessageElement.current.value = '';
 	};
 
 	return (
@@ -25,9 +26,9 @@ const Dialogs = (props) => {
 				{messagesElements}
 			</div>
 			<div className={s.newMessage}>
-				<textarea ref={newPostElement} placeholder='Enter your message' />
+				<textarea ref={newMessageElement} placeholder='Enter your message' />
 				<div>
-					<button onClick={createPost}>Enter</button>
+					<button onClick={createMessage}>Enter</button>
 				</div>
 			</div>
 		</div>

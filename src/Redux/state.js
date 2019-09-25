@@ -1,13 +1,16 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
-	profilePage:{
+	profilePage: {
 		posts: [
 			{id: 1, post: 'Hi, how are you?'},
 			{id: 2, post: 'It\'s my first post'},
 			{id: 3, post: 'Now using arrays'},
 			{id: 4, post: 'As well as the map function'}
 		],
+		newPostText: 'Your new post'
 	},
-	messagesPage:{
+	messagesPage: {
 		dialogs: [
 			{id: 1, name: 'one'},
 			{id: 2, name: 'two'},
@@ -24,13 +27,30 @@ let state = {
 	}
 };
 
-export let addPost = (postMessage) => {
-	debugger;
+window.state = state;
+
+export let addPost = () => {
 	let newPost = {
 		id: 5,
-		post: postMessage
+		post: state.profilePage.newPostText
 	};
 	state.profilePage.posts.push(newPost);
+	state.profilePage.newPostText = '';
+	rerenderEntireTree(state);
+};
+
+export let addMessage = (Message) => {
+	let newMessage = {
+		id: 6,
+		message: Message
+	};
+	state.messagesPage.messages.push(newMessage);
+	rerenderEntireTree(state);
+};
+
+export let updateNewPostText = (NewText) => {
+	state.profilePage.newPostText = NewText;
+	rerenderEntireTree(state);
 };
 
 export default state;

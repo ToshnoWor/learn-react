@@ -8,14 +8,21 @@ const CreatePost = (props) => {
 	let newPostElement = React.createRef();
 
 	let createPost = () => {
-		debugger;
+		props.addPost();
+	};
+
+	let onPostChange = () =>{
 		let text = newPostElement.current.value;
-		props.addPost(text);
+		console.log(text);
+		props.updateNewPostText(text);
 	};
 
 	return (
 		<div className={s.Create_post}>
-			<textarea ref={newPostElement} placeholder='Your new post' />
+			<textarea onChange={onPostChange}
+			          ref={newPostElement}
+			          placeholder='Your new post'
+			          value={props.newPostText} />
 			<button onClick={createPost}>Send
 			</button>
 		</div>
