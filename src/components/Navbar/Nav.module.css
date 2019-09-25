@@ -28,3 +28,6 @@
 .item a.activeLink {
     color: gold;
 }
+.divFriends{
+ display: none;
+}

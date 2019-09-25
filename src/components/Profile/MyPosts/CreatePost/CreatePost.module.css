@@ -11,17 +11,4 @@
 }
 .Create_post > button{
     margin-right: 10px;
-    width: 100px;
-    height: 40px;
-    background: #00586b;
-    border: 1px solid blue;
-    color: white;
-    padding-left: 0px;
-    padding-right: 20px;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-}
-.Create_post > button:active{
-    border: 3px solid blue;
 }

@@ -1,13 +1,15 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    grid-template-rows: 10fr 2fr;
+    grid-template-areas: "dialogs message" "newMessage newMessage";
 }
 
 .dialogsItems {
     padding: 10px;
 }
 
-.dialogsItems .active{
+.dialogsItems .active {
     color: gold;
 }
 
@@ -15,7 +17,8 @@
     text-decoration: none;
     color: white;
 }
-.dialog a:hover{
+
+.dialog a:hover {
     color: gold;
 }
 
@@ -23,3 +26,21 @@
     padding: 10px;
 }
 
+.newMessage {
+    grid-area: newMessage;
+    display: grid;
+    grid-template-columns: 10fr 2fr;
+    grid-gap: 5px;
+    margin: 5px;
+}
+
+.newMessage > textarea {
+    height: 60px;
+}
+
+.newMessage > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

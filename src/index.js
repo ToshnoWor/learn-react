@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {addPost} from "./Redux/state";
+import state from "./Redux/state";
+import {BrowserRouter} from "react-router-dom";
 
 //Data Storage---------------------------------------------------------
-let posts = [
+/*let posts = [
 	{id: 1, post: 'Hi, how are you?'},
 	{id: 2, post: 'It\'s my first post'},
 	{id: 3, post: 'Now using arrays'},
@@ -23,13 +26,17 @@ let messages = [
 	{id: 3, message: 'yo, how are you man'},
 	{id: 4, message: 'fine'},
 	{id: 5, message: 'cool'}
-];
+];*/
 //---------------------------------------------------------------------
 //FunctionElements-----------------------------------------------------
-/*let postsElements = posts.map( p => <MyPost message={p.post} /> );*/
 //---------------------------------------------------------------------
 
-ReactDOM.render(<App posts={posts} dialogs={dialogs} messages={messages}/>, document.getElementById('root'));
+/*addPost('New Message from state');*/
+
+ReactDOM.render(
+	<BrowserRouter>
+		<App state={state} addPost={addPost} />
+	</BrowserRouter>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
