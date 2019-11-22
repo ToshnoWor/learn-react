@@ -11,9 +11,10 @@ const MyPosts = (props) => {
 	return (
 		<div className={s.my_posts}>
 			My posts
-			<CreatePost addPost={props.addPost}
+			<CreatePost
 			            newPostText={props.newPostText}
-			            updateNewPostText={props.updateNewPostText}/>
+						dispatch={props.dispatch}
+			/>
 			<div className={s.posts}>
 				{postsElements}
 			</div>
