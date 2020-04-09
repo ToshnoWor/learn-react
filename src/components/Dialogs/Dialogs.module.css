@@ -34,13 +34,22 @@
     margin: 5px;
 }
 
-.newMessage > textarea {
-    height: 60px;
+.newMessage textarea {
+    height: 90%;
+    width: 99%;
+    resize: none;
 }
 
-.newMessage > div {
+.newMessage > div:nth-child(2) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 60px;
+    width: 100%;
+}
+.newMessage button{
+    height: 100%;
+    width: 100%;
+    text-align: center;
 }
