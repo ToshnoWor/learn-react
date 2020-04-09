@@ -5,7 +5,7 @@ import Nav from './components/Navbar/Nav';
 import Profile from './components/Profile/Profile';
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
-import store from "./Redux/state";
+import store from "./redux/state";
 
 const App = (props) => {
 	return (

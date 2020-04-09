@@ -3,6 +3,7 @@ import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
 import button from '../cssModule/button.module.css'
+import {createMessageCreator} from "../../redux/state";
 
 const Dialogs = (props) => {
 
@@ -13,7 +14,8 @@ const Dialogs = (props) => {
 
 	let createMessage = () => {
 		let text = newMessageElement.current.value;
-		props.dispatch({type: 'ADD-MESSAGE', Message: text});
+		//props.dispatch({type: 'ADD-MESSAGE', Message: text});
+		props.dispatch(createMessageCreator(text));
 		newMessageElement.current.value = '';
 	};
 
