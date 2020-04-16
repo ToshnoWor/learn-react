@@ -1,27 +1,21 @@
 import React from 'react';
-import s from './CreatePost.module.css'
-import button from '../../../cssModule/button.module.css'
-import {addPostActionCreator, updateNewPostTextActionCreator}
-	from "../../../../redux/profile-reducer";
+import s from './CreatePost.module.css';
+import button from '../../../cssModule/button.module.css';
 
 
 
 
 
 const CreatePost = (props) => {
-
 	let newPostElement = React.createRef();
 
-	let createPost = () => {
-		props.dispatch(addPostActionCreator());
+	let onCreatePost = () => {
+		props.createPost();
 	};
 
 	let onPostChange = () =>{
 		let text = newPostElement.current.value;
-		console.log(text);
-		//let action = { type: 'UPDATE-NEW-POST-TEXT', newText: text };
-		let action = updateNewPostTextActionCreator(text);
-		props.dispatch(action);
+		props.updateNewPostText(text);
 	};
 
 	return (
@@ -30,7 +24,7 @@ const CreatePost = (props) => {
 			          ref={newPostElement}
 			          placeholder='Your new post'
 			          value={props.newPostText} />
-			<button onClick={createPost}>Send
+			<button onClick={onCreatePost}>Send
 			</button>
 		</div>
 	)

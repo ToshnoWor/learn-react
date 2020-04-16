@@ -3,12 +3,10 @@ import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
 import button from '../cssModule/button.module.css'
-import {createMessageActionCreator, updateNewMessageTextActionCreator}
-from "../../redux/message-reducer";
 
 const Dialogs = (props) => {
 
-	let state = props.store.getState().messagesPage;
+	let state = props.messagesPage;
 
 	let dialogsElements = state.dialogs.map(dialog =>
 		<DialogItem name={dialog.name} id={dialog.id}/>
@@ -16,20 +14,14 @@ const Dialogs = (props) => {
 	let messagesElements = state.messages.map(message => <Message message={message.message}/>);
 	let newMessageText = state.newMessageText;
 
-	//let newMessageElement = React.createRef();
 
 	let createMessage = () => {
-		//let text = newMessageElement.current.value;
-		//props.dispatch({type: 'ADD-MESSAGE', Message: text});
-		props.store.dispatch(createMessageActionCreator());
-		//newMessageElement.current.value = "";
+		props.createMessageActionCreator();
 	};
 
 	let changeMessageText = (e) => {
 		let text = e.target.value;
-		//let text = newMessageElement.current.value;
-		console.log(text);
-		props.store.dispatch(updateNewMessageTextActionCreator(text));
+		props.updateNewMessageTextActionCreator(text)
 	}
 
 	return (
@@ -44,7 +36,6 @@ const Dialogs = (props) => {
 				<div>
 					<textarea
 						onChange={changeMessageText}
-						//ref={newMessageElement}
 						value={newMessageText}
 						placeholder='Enter your message'
 					/>
