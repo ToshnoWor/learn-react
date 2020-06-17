@@ -1,27 +1,35 @@
 import React from 'react';
 import s from './MyPosts.module.css'
-import Post from './Post/Post';
-import CreatePostContainer from "./CreatePost/CreatePostContainer";
+import button from "../../cssModule/button.module.css";
 
 const MyPosts = (props) => {
-	debugger
-	let postsElements =
-		props.store.getState().profilePage.posts.map(
-			p => <Post message={p.post}/>
-			)
-	;
+    let newPostElement = React.createRef();
 
-	return (
-		<div className={s.my_posts}>
-			My posts
-			<CreatePostContainer
-				store={props.store}
-			/>
-			<div className={s.posts}>
-				{postsElements}
-			</div>
-		</div>
-	)
+	let onCreatePost = () => {
+		props.createPost();
+	};
+
+	let onPostChange = () =>{
+		let text = newPostElement.current.value;
+		props.updateNewPostText(text);
+	};
+
+    return (
+        <div className={s.my_posts}>
+            My posts
+            <div className={s.Create_post}>
+			<textarea onChange={onPostChange}
+                      ref={newPostElement}
+                      placeholder='Your new post'
+                      value={props.newPostText}/>
+                <button onClick={onCreatePost}>Send
+                </button>
+            </div>
+            <div className={s.posts}>
+                {props.postsElements}
+            </div>
+        </div>
+    )
 };
 
 export default MyPosts;

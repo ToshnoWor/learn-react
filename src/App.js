@@ -15,14 +15,15 @@ const App = (props) => {
 				<Route path='/profile'
 				       render={() =>
 						   <Profile
-							   store={props.store}
+							   postsElements={props.postsElements}
+							   /*store={props.store}*/
 						   />
 				       }
 				/>
 				<Route path='/dialogs'
 				       render={() =>
 						   <DialogsContainer
-							store={props.store}
+							/*store={props.store}*/
 						   />
 				       }
 				/>
