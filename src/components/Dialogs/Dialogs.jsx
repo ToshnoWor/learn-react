@@ -16,12 +16,12 @@ const Dialogs = (props) => {
 
 
 	let createMessage = () => {
-		props.createMessageActionCreator();
+		props.sendMessage();
 	};
 
 	let changeMessageText = (e) => {
 		let text = e.target.value;
-		props.updateNewMessageTextActionCreator(text)
+		props.updateNewMessageBody(text)
 	}
 
 	return (

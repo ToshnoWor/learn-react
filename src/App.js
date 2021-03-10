@@ -12,10 +12,16 @@ const App = () => {
 			<Header/>
 			<Nav/>
 			<div className='app_wrapper-content'>
-				<Route path='/dialogs'
-					   render={() => <DialogsContainer /> }/>
 				<Route path='/profile'
-				       render={() => <Profile /> }/>
+				       render={() =>
+						   <Profile/>
+				       }
+				/>
+				<Route path='/dialogs'
+				       render={() =>
+						   <DialogsContainer/>
+				       }
+				/>
 			</div>
 		</div>
 	);
