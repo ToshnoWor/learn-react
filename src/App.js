@@ -5,6 +5,7 @@ import Nav from './components/Navbar/Nav';
 import Profile from './components/Profile/Profile';
 import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = () => {
 	return (
@@ -14,13 +15,18 @@ const App = () => {
 			<div className='app_wrapper-content'>
 				<Route path='/profile'
 				       render={() =>
-						   <Profile/>
+						   <Profile />
 				       }
 				/>
 				<Route path='/dialogs'
 				       render={() =>
-						   <DialogsContainer/>
+						   <DialogsContainer />
 				       }
+				/>
+				<Route path='/users'
+					   render={() =>
+						   <UsersContainer />
+					   }
 				/>
 			</div>
 		</div>

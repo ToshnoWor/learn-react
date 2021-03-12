@@ -19,11 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="copy state in reducers">
+    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="refactor reducers&#10;delete local let stateCopy">
+      <change afterPath="$PROJECT_DIR$/src/components/Users/Users.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Users/users.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/users-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/message-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/message-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profile-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/redux-store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/redux-store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +144,8 @@
       <workItem from="1586517904370" duration="63000" />
       <workItem from="1587037749821" duration="9365000" />
       <workItem from="1592384119939" duration="5654000" />
-      <workItem from="1615483442626" duration="4552000" />
+      <workItem from="1615483442626" duration="4811000" />
+      <workItem from="1615555763462" duration="6225000" />
     </task>
     <task id="LOCAL-00001" summary="action creator, type">
       <created>1586426190473</created>
@@ -191,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615485194011</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="refactor reducers&#10;delete local let stateCopy">
+      <created>1615488953571</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1615488953571</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +241,8 @@
     <MESSAGE value="container component" />
     <MESSAGE value="fix" />
     <MESSAGE value="copy state in reducers" />
-    <option name="LAST_COMMIT_MESSAGE" value="copy state in reducers" />
+    <MESSAGE value="refactor reducers&#10;delete local let stateCopy" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor reducers&#10;delete local let stateCopy" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

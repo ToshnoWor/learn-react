@@ -1,0 +1,47 @@
+.userPhoto{
+    width: 80px;
+    border-radius: 50%;
+}
+.userWrapper{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 25%;
+}
+.PhotoAndButton{
+
+}
+.UserInfo{
+    display: grid;
+    margin-left: 50px;
+    grid-template-columns: 100px 75px 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "a z c"
+                         "a z d"
+                         "b b b";
+}
+.UserName{
+    grid-area: a;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 20px;
+}
+.UserStatus{
+    grid-area: b;
+    font-size: 14px;
+    font-style: italic;
+}
+.UserCity{
+    grid-area: c;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 18px;
+}
+.UserCountry{
+    grid-area: d;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    font-size: 18px;
+}
