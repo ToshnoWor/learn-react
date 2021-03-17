@@ -19,10 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="side effect">
+    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="extends React.Component">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/Users.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/Users.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +144,7 @@
       <workItem from="1592384119939" duration="5654000" />
       <workItem from="1615483442626" duration="4811000" />
       <workItem from="1615555763462" duration="9743000" />
-      <workItem from="1615995656922" duration="2270000" />
+      <workItem from="1615995656922" duration="2945000" />
     </task>
     <task id="LOCAL-00001" summary="action creator, type">
       <created>1586426190473</created>
@@ -224,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615996371131</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="extends React.Component">
+      <created>1615997971800</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1615997971800</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,7 +273,8 @@
     <MESSAGE value="add users" />
     <MESSAGE value="add users API" />
     <MESSAGE value="side effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="side effect" />
+    <MESSAGE value="extends React.Component" />
+    <option name="LAST_COMMIT_MESSAGE" value="extends React.Component" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

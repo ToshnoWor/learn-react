@@ -5,12 +5,7 @@ import userPhoto from "../../assets/images/default.png"
 
 class Users extends React.Component{
 
-    constructor(props) {
-        super(props);
-        this.getUsers();
-    }
-
-    getUsers = () => {
+    componentDidMount() {
         axios
             .get("https://social-network.samuraijs.com/api/1.0/users/1079")
             .then(r => {
