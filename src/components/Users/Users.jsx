@@ -4,17 +4,84 @@ import * as axios from "axios";
 import userPhoto from "../../assets/images/default.png"
 
 class Users extends React.Component{
-
     componentDidMount() {
         axios
-            .get("https://social-network.samuraijs.com/api/1.0/users/1079")
+            .get("http://localhost:3030/items")
+            /*.get("https://social-network.samuraijs.com/api/1.0/users/1079?" +
+                "page=${this.props.currentPage}&" +
+                "count=${this.props.pageSize}")*/
             .then(r => {
-                this.props.setUsers(r.data.items);
+                this.createMass(r.data, this.props.currentPage);
+                // this.props.setUsers(r.data.items);
+                // this.props.setTotalUsersCount(r.data.totalCount>5000
+                //     ? r.data.totalCount/1000
+                //     : r.data.totalCount);
+            });
+    }
+
+    sumSize(num, count){
+        /*alert(num + " " + count);*/
+        if (count === 0) num = 0;
+        else
+            if (count > 1)
+                for (let i = 0; i < count-1; i++){
+                    num += num;
+                }
+        /*alert(num);*/
+        return num;
+    }
+
+    createMass(input, p){
+        let outMass = [];
+        let inMass = [...input];
+        this.props.setTotalUsersCount(inMass.length);
+
+        let start = this.sumSize(this.props.pageSize, p-1);
+        let end = this.sumSize(this.props.pageSize, p);
+        if(end > this.props.totalUserCount) end = this.props.totalUserCount;
+        /*alert("totalUserCount = " + this.props.totalUserCount);
+        alert("Rez = " + ((end > this.props.totalUserCount) ? this.props.totalUserCount : end));*/
+        for (let i = start;i < end;i++){
+            outMass.push(inMass[i]);
+        }
+        this.props.setUsers(outMass);
+    }
+
+    onPageChanged = (pageNumber) =>{
+        this.props.setCurrentPage(pageNumber);
+        axios
+            .get("http://localhost:3030/items")
+            /*.get("https://social-network.samuraijs.com/api/1.0/users/1079?" +
+                "page=${pageNumber}&" +
+                "count=${this.props.pageSize}")*/
+            .then(r => {
+                this.createMass(r.data, pageNumber);
+                /*this.props.setUsers(r.data.items);
+                this.props.setTotalUsersCount(r.data.totalCount>5000
+                    ? r.data.totalCount/1000
+                    : r.data.totalCount);*/
             });
     }
 
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize);
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++){
+            pages.push(i);
+        }
+
         return <div>
+            <div className={s.pageList}>
+                { pages.map(p => {
+                    return <span key={p} className={this.props.currentPage === p && s.selectedPage}
+                    onClick={(e) => {
+                        this.onPageChanged(p);
+                    }}>
+                        {p}
+                    </span>
+                })}
+            </div>
             {
                 this.props.users.map(u => <div key={u.id} className={s.userWrapper}>
                     <div className={s.PhotoAndButton}>

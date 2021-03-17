@@ -45,3 +45,13 @@
     align-items: flex-start;
     font-size: 18px;
 }
+.selectedPage{
+    font-weight: bold;
+}
+.pageList{
+    margin-top: 20px;
+}
+.pageList > span{
+    cursor: pointer;
+    margin-left: 20px;
+}
