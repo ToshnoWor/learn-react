@@ -19,9 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="add users API">
+    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="side effect">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/Users.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/Users.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +66,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Dialogs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Users" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -82,11 +83,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\Diplom\learn-react\src\components\Users" />
       <recent name="E:\Project\Diplom\learn-react\src\components\Dialogs" />
       <recent name="D:\SAVE\Desktop\REACT_PROJECT\react\git\learn-react\src\components\Profile\MyPosts\Post" />
       <recent name="D:\SAVE\Desktop\REACT_PROJECT\react\git\learn-react\src\components\Dialogs" />
       <recent name="D:\SAVE\Desktop\REACT_PROJECT\react\git\learn-react\src\components\Profile\MyPosts\CreatePost" />
-      <recent name="D:\SAVE\Desktop\REACT_PROJECT\react\git\learn-react\src\redux" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\SAVE\Desktop\REACT_PROJECT\react\git\learn-react\src\components\Profile\MyPosts" />
@@ -144,7 +145,7 @@
       <workItem from="1592384119939" duration="5654000" />
       <workItem from="1615483442626" duration="4811000" />
       <workItem from="1615555763462" duration="9743000" />
-      <workItem from="1615995656922" duration="683000" />
+      <workItem from="1615995656922" duration="2270000" />
     </task>
     <task id="LOCAL-00001" summary="action creator, type">
       <created>1586426190473</created>
@@ -216,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615565576497</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="side effect">
+      <created>1615996371131</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1615996371131</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +266,8 @@
     <MESSAGE value="refactor reducers&#10;delete local let stateCopy" />
     <MESSAGE value="add users" />
     <MESSAGE value="add users API" />
-    <option name="LAST_COMMIT_MESSAGE" value="add users API" />
+    <MESSAGE value="side effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="side effect" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>
