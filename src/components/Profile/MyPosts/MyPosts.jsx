@@ -4,7 +4,7 @@ import button from "../../cssModule/button.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-    let postsElements = props.posts.map(p => <Post message={p.post}/>);
+    let postsElements = props.posts.map(p => <Post key={p.id} message={p.post}/>);
 
     let newPostElement = React.createRef();
 
