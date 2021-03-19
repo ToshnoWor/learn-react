@@ -1,6 +1,6 @@
 import React from 'react';
-import s from "./users.module.css";
-import userPhoto from "../../assets/images/default.png";
+import s from './users.module.css';
+import userPhoto from '../../assets/images/default.png';
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -12,12 +12,12 @@ let Users = (props) => {
     return <div>
         <div className={s.pageList}>
             { pages.map(p => {
-                return <span key={p} className={props.currentPage === p && s.selectedPage}
+                return <div key={p} className={props.currentPage === p ? s.selectedPage : ""}
                              onClick={(e) => {
                                  props.onPageChanged(p);
                              }}>
                         {p}
-                    </span>
+                    </div>
             })}
         </div>
         {

@@ -49,9 +49,10 @@
     font-weight: bold;
 }
 .pageList{
+    display: flex;
     margin-top: 20px;
 }
-.pageList > span{
+.pageList > div{
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 5px;
 }

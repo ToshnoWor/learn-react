@@ -19,11 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="life cycle methods, componentDidMount">
+    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="add Preloader">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/Preloader.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/PreloaderNoBack.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/PreloaderNoBack.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Preloader/preloader.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar/Nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/Nav.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/Users.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/Users.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Users/users.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/users.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/users-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/users-reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +43,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -68,6 +75,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="js.last.introduce.type" value="CONST" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-way-of-samurai" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -91,6 +99,7 @@
       <recent name="D:\SAVE\Desktop\REACT_PROJECT\react\git\learn-react\src\components\Profile\MyPosts\CreatePost" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Project\Diplom\learn-react\src\assets\images" />
       <recent name="D:\SAVE\Desktop\REACT_PROJECT\react\git\learn-react\src\components\Profile\MyPosts" />
       <recent name="D:\SAVE\Desktop\REACT_PROJECT\react\git\learn-react\src" />
     </key>
@@ -147,7 +156,7 @@
       <workItem from="1615483442626" duration="4811000" />
       <workItem from="1615555763462" duration="9743000" />
       <workItem from="1615995656922" duration="15220000" />
-      <workItem from="1616163265528" duration="1499000" />
+      <workItem from="1616163265528" duration="4638000" />
     </task>
     <task id="LOCAL-00001" summary="action creator, type">
       <created>1586426190473</created>
@@ -247,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616014349292</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Presentation and Container Components">
+      <created>1616164832948</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1616164832948</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +309,9 @@
     <MESSAGE value="extends React.Component" />
     <MESSAGE value="life cycle methods, componentDidMount" />
     <MESSAGE value="pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="pagination" />
+    <MESSAGE value="Presentation and Container Components" />
+    <MESSAGE value="add Preloader" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Preloader" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>
