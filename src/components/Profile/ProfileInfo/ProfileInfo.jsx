@@ -20,10 +20,10 @@ const ProfileInfo = (props) => {
 				<div className={s.profile_logo}><img
 					src={props.profile.photo === null ? defaultPhotoMan : props.profile.photo}
 					alt={"=("}/></div>
-				<ProfileSpecimen profile_name={props.profile.name}
-								 profile_age={props.profile.age}
-								 profile_sex={props.profile.type}
-								 profile_city={props.profile.city}
+				<ProfileSpecimen profile_name={props.profile.name === null ? "" : props.profile.name}
+								 profile_age={props.profile.age === null ? "" : props.profile.age}
+								 profile_sex={props.profile.type === null ? "" : props.profile.type}
+								 profile_city={props.profile.city === null ? "" : props.profile.city}
 								 profile_status={props.profile.status ? "online" : "offline"}/>
 			</div>
 		</div>
