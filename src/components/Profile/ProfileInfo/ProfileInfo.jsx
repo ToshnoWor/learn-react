@@ -1,9 +1,14 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
 import ProfileSpecimen from "./ProfileSpecimen/ProfileSpecimen";
+import defaultPhotoMan from '../../../assets/images/defaultUserMan.png';
+import Preloader from "../../common/Preloader/Preloader";
 
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+	if (!props.profile)
+		return <Preloader />
+
 	return (
 		<div>
 			<div className={s.pro_logo}>
@@ -13,10 +18,13 @@ const ProfileInfo = () => {
 			</div>
 			<div className={s.ava_description}>
 				<div className={s.profile_logo}><img
-					src="https://cdn3.iconfinder.com/data/icons/users-6/100/654853-user-men-2-512.png"
+					src={props.profile.photo === null ? defaultPhotoMan : props.profile.photo}
 					alt={"=("}/></div>
-				<ProfileSpecimen profile_name="Alex Smith" profile_age="19" profile_sex="Male" profile_city="Symu"
-				                profile_status="online"/>
+				<ProfileSpecimen profile_name={props.profile.name}
+								 profile_age={props.profile.age}
+								 profile_sex={props.profile.type}
+								 profile_city={props.profile.city}
+								 profile_status={props.profile.status ? "online" : "offline"}/>
 			</div>
 		</div>
 	)
