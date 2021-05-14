@@ -15,15 +15,13 @@ import Preloader from "../common/Preloader/Preloader";
 class UsersContainer extends React.Component{
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get("http://localhost:3030/about")
-            .then( r => {
-                this.props.setUsersTotalCount(r.data[0].totalCount);
-            });
-        axios.get("http://localhost:3030/items?" +
+        axios.get("http://localhost:3033/api/profile/get?" +
             "_page=" + this.props.currentPage +
             "&_limit=" + this.props.pageSize)
             .then(r => {
-                this.props.setUsers(r.data);
+                console.log(r.data);
+                this.props.setUsersTotalCount(r.data.totalDocs);
+                this.props.setUsers(r.data.docs);
                 this.props.toggleIsFetching(false);
             });
 
@@ -32,16 +30,13 @@ class UsersContainer extends React.Component{
     onPageChanged = (pageNumber) =>{
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(pageNumber);
-        axios.get("http://localhost:3030/about")
-            .then( r => {
-                this.props.setUsersTotalCount(r.data[0].totalCount);
-            });
         axios
-            .get("http://localhost:3030/items?" +
+            .get("http://localhost:3033/api/profile/get?" +
                 "_page=" + pageNumber +
                 "&_limit=" + this.props.pageSize)
             .then(r => {
-                this.props.setUsers(r.data);
+                this.props.setUsersTotalCount(r.data.totalDocs);
+                this.props.setUsers(r.data.docs);
                 this.props.toggleIsFetching(false);
             });
 

@@ -4,7 +4,10 @@ import button from "../../cssModule/button.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-    let postsElements = props.posts.map(p => <Post key={p.id} message={p.post}/>);
+    let postsElements;
+    let a = props.posts;
+    if(a!=null)
+        postsElements = a.map((p, id) => <Post key={id} message={p}/>);
 
     let newPostElement = React.createRef();
 
@@ -16,7 +19,6 @@ const MyPosts = (props) => {
 		let text = newPostElement.current.value;
 		props.updateNewPostText(text);
 	};
-
     return (
         <div className={s.my_posts}>
             My posts
@@ -29,7 +31,7 @@ const MyPosts = (props) => {
                 </button>
             </div>
             <div className={s.posts}>
-                {postsElements}
+                {postsElements !== "undefined" ? postsElements : ""}
             </div>
         </div>
     )

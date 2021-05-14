@@ -8,7 +8,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 let initialState = {
     users: [],
     pageSize: 2,
-    totalUserCount: 5,
+    totalUserCount: 7,
     currentPage: 1,
     isFetching: false
 }
@@ -19,7 +19,7 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.id===action.userId)
+                    if (u._id===action.userId)
                         return {...u, followed: true}
                     return u;
                 })
@@ -28,7 +28,7 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.id===action.userId)
+                    if (u._id===action.userId)
                         return {...u, followed: false}
                     return u;
                 })
