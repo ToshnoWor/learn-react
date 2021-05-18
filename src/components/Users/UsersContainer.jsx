@@ -17,12 +17,22 @@ class UsersContainer extends React.Component{
         this.props.toggleIsFetching(true);
         axios.get("http://localhost:3033/api/profile/get?" +
             "_page=" + this.props.currentPage +
-            "&_limit=" + this.props.pageSize)
+            "&_limit=" + this.props.pageSize,
+            {withCredentials: true})
             .then(r => {
-                console.log(r.data);
                 this.props.setUsersTotalCount(r.data.totalDocs);
-                this.props.setUsers(r.data.docs);
-                this.props.toggleIsFetching(false);
+                if (this.props.auth.isAuth)
+                axios.get("http://127.0.0.1:3033/api/profile/" + this.props.auth.userId)
+                    .then(r2 => {
+                        let followed = r2.data[0].followers;
+                        r.data.docs.map(u =>{
+                            u.followed = !!followed.includes(u._id);
+                            return u;
+                        })
+
+                        this.props.setUsers(r.data.docs);
+                        this.props.toggleIsFetching(false);
+                    });
             });
 
     }
@@ -33,11 +43,20 @@ class UsersContainer extends React.Component{
         axios
             .get("http://localhost:3033/api/profile/get?" +
                 "_page=" + pageNumber +
-                "&_limit=" + this.props.pageSize)
+                "&_limit=" + this.props.pageSize,
+                {withCredentials: true})
             .then(r => {
                 this.props.setUsersTotalCount(r.data.totalDocs);
-                this.props.setUsers(r.data.docs);
-                this.props.toggleIsFetching(false);
+                axios.get("http://127.0.0.1:3033/api/profile/" + this.props.auth.userId)
+                    .then(r2 => {
+                        let followed = r2.data[0].followers;
+                        r.data.docs.map(u =>{
+                            u.followed = !!followed.includes(u._id);
+                            return u;
+                        })
+                        this.props.setUsers(r.data.docs);
+                        this.props.toggleIsFetching(false);
+                    });
             });
 
     }
@@ -54,6 +73,7 @@ class UsersContainer extends React.Component{
                     users={this.props.users}
                     unfollow={this.props.unfollow}
                     follow={this.props.follow}
+                    auth={this.props.auth}
                 />}
         </>
     }
@@ -65,7 +85,8 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUserCount: state.usersPage.totalUserCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        auth: state.auth
     }
 }
 

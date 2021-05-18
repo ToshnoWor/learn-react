@@ -10,7 +10,7 @@ class ProfileContainer extends React.Component{
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId)
-            userId = "609a8b00a502c228c84627ea";
+            userId = "609eb44a0e5ec3214c6e14d1";
         axios.get("http://127.0.0.1:3033/api/profile/" + userId)
             .then(r => {
                 this.props.setUserProfile(r.data[0]);

@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
 			</div>
 			<div className={s.ava_description}>
 				<div className={s.profile_logo}><img
-					src={props.profile.photo === null||"undefined" ? defaultPhotoMan : props.profile.photo}
+					src={props.profile.photo === null ? defaultPhotoMan : props.profile.photo}
 					alt={"=("}/></div>
 				<ProfileSpecimen profile_name={props.profile.name === null ? "" : props.profile.name}
 								 profile_age={props.profile.age === null ? "" : props.profile.age}

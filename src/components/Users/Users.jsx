@@ -2,6 +2,7 @@ import React from 'react';
 import s from './users.module.css';
 import userPhoto from '../../assets/images/defaultUserMan.png';
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -9,7 +10,6 @@ let Users = (props) => {
     for (let i = 1; i <= pagesCount; i++){
         pages.push(i);
     }
-
     return <div>
         <div className={s.pageList}>
             { pages.map(p => {
@@ -30,8 +30,46 @@ let Users = (props) => {
                         </NavLink>
                     </div>
                     { u.followed
-                        ? <button onClick={() => {props.unfollow(u._id)}}>Unfollow</button>
-                        : <button onClick={() => {props.follow(u._id)}}>Follow</button>
+                        ? <button onClick={() => {
+                            //this.props.toggleIsFetching(true);
+                            axios.delete("http://localhost:3033/api/profile/unfollow/"+u._id,
+                                {
+                                    withCredentials: true,
+                                    headers: {
+                                        'auth-token': props.auth ? props.auth.accessToken : ''
+                                    }
+                                }
+                            )
+                                .then(r => {
+                                    console.log(r);
+                                    if (r.status === 200){
+                                        props.unfollow(u._id)
+                                    }
+                                    //this.props.toggleIsFetching(false);
+                                });
+                            }
+
+                        }>Unfollow</button>
+                        : <button onClick={() => {
+                            //this.props.toggleIsFetching(true);
+                            axios.post("http://localhost:3033/api/profile/follow/"+u._id,
+                                {},
+                                {
+                                    withCredentials: true,
+                                    headers: {
+                                        'auth-token': props.auth ? props.auth.accessToken : ''
+                                    }
+                                }
+                            )
+                                .then(r => {
+                                    console.log(r);
+                                    if (r.status === 200){
+                                        props.follow(u._id)
+                                    }
+                                    //this.props.toggleIsFetching(false);
+                                });
+
+                        }}>Follow</button>
                     }
                 </div>
                 <div className={s.UserInfo}>
