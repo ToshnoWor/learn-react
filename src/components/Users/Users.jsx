@@ -31,7 +31,6 @@ let Users = (props) => {
                     </div>
                     { u.followed
                         ? <button onClick={() => {
-                            //this.props.toggleIsFetching(true);
                             axios.delete("http://localhost:3033/api/profile/unfollow/"+u._id,
                                 {
                                     withCredentials: true,
@@ -41,19 +40,13 @@ let Users = (props) => {
                                 }
                             )
                                 .then(r => {
-                                    console.log(r);
                                     if (r.status === 200){
                                         props.unfollow(u._id)
                                     }
-                                    //this.props.toggleIsFetching(false);
                                 });
-                            }
-
-                        }>Unfollow</button>
+                            }}>Unfollow</button>
                         : <button onClick={() => {
-                            //this.props.toggleIsFetching(true);
-                            axios.post("http://localhost:3033/api/profile/follow/"+u._id,
-                                {},
+                            axios.post("http://localhost:3033/api/profile/follow/"+u._id, {},
                                 {
                                     withCredentials: true,
                                     headers: {
@@ -66,9 +59,7 @@ let Users = (props) => {
                                     if (r.status === 200){
                                         props.follow(u._id)
                                     }
-                                    //this.props.toggleIsFetching(false);
                                 });
-
                         }}>Follow</button>
                     }
                 </div>

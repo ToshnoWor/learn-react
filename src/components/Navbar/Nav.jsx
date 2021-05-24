@@ -11,7 +11,7 @@ const  Nav = () => {
 			<div className={s.item}><NavLink to="/#" >Music</NavLink></div>
 			<div className={s.item}><NavLink to="/users" >Users</NavLink></div>
 			<div className={s.item}>
-				<NavLink to="/#" >My Friends</NavLink>
+				<NavLink to="/friends" >My Friends</NavLink>
 				<div className={s.divFriends}>
 					<div className="MyFriends">One</div>
 					<div className="MyFriends">Two</div>

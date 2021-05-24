@@ -1,0 +1,44 @@
+.main{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    min-height: 100%;
+}
+.friendFrame{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.name{
+    margin-top: 20px;
+    font-size: 20px;
+    color: black;
+}
+.photo{
+    width: 100px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.photo:hover{
+    height: 300px;
+    z-index: 9999;
+}
+.photo > img{
+    height: 100%;
+}
+.buttonFrame{
+    margin-top: 10px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 50px;
+}

@@ -1,10 +1,15 @@
 html, body {
     min-height: 100%;
     margin: 0;
+    height: 0;
 }
 
-#id {
-    min-height: 100%;
+/*#id {*/
+/*    min-height: 100%;*/
+/*}*/
+
+#root{
+    height: 100%;
 }
 
 .app_wrapper {
@@ -13,6 +18,7 @@ html, body {
     grid-template-areas: "h h" "n c";
     grid-template-rows: 60px 1fr;
     grid-template-columns: 150px 1fr;
+    height: 100%;
 }
 
 .app_wrapper-content {
