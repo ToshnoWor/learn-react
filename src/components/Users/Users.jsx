@@ -2,7 +2,7 @@ import React from 'react';
 import s from './users.module.css';
 import userPhoto from '../../assets/images/defaultUserMan.png';
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
+import {userAPI} from "../../api/api";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -31,14 +31,7 @@ let Users = (props) => {
                     </div>
                     { u.followed
                         ? <button onClick={() => {
-                            axios.delete("http://localhost:3033/api/profile/unfollow/"+u._id,
-                                {
-                                    withCredentials: true,
-                                    headers: {
-                                        'auth-token': props.auth ? props.auth.accessToken : ''
-                                    }
-                                }
-                            )
+                            userAPI.unfollow(props.auth, u._id)
                                 .then(r => {
                                     if (r.status === 200){
                                         props.unfollow(u._id)
@@ -46,16 +39,8 @@ let Users = (props) => {
                                 });
                             }}>Unfollow</button>
                         : <button onClick={() => {
-                            axios.post("http://localhost:3033/api/profile/follow/"+u._id, {},
-                                {
-                                    withCredentials: true,
-                                    headers: {
-                                        'auth-token': props.auth ? props.auth.accessToken : ''
-                                    }
-                                }
-                            )
+                            userAPI.follow(props.auth, u._id)
                                 .then(r => {
-                                    console.log(r);
                                     if (r.status === 200){
                                         props.follow(u._id)
                                     }

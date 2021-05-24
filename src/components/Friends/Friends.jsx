@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Friends.module.css';
 import defaultPhoto from '../../assets/images/defaultUserMan.png';
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
+import {userAPI} from "../../api/api";
 
 const Friends = (props) =>{
     let friend = null;
@@ -14,16 +14,7 @@ const Friends = (props) =>{
                 <div className={s.name}>{p.name}</div>
             </NavLink>
                 <button className={s.buttonFrame} onClick={() => {
-                    axios.delete("http://localhost:3033/api/profile/unfollow/"+p._id,
-                        {
-                            withCredentials: true,
-                            headers: {
-                                'auth-token': props.auth ? props.auth.accessToken : ''
-                            }
-                        }
-                    )
-                        .then(r => {
-                            console.log(r);
+                    userAPI.unfollow(props.auth, p._id).then(r => {
                             if (r.status === 200){
                                 props.unfollow(p)
                             }

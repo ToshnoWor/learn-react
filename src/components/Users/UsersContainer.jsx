@@ -8,57 +8,40 @@ import {
     toggleIsFetching,
     unfollow
 } from "../../redux/users-reducer";
-import * as axios from 'axios';
 import Users from './Users.jsx';
 import Preloader from "../common/Preloader/Preloader";
+import {userAPI} from "../../api/api";
+
+const getUser = (props, data) => {
+    userAPI.getProfile(props.auth.userId).then(r => {
+        props.toggleIsFetching(false);
+        let followed = r.data[0].followers;
+        data.docs.map(u =>{
+            u.followed = !!followed.includes(u._id);
+            return u;
+        });
+        props.setUsers(data.docs);
+    });
+}
 
 class UsersContainer extends React.Component{
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get("http://localhost:3033/api/profile/get?" +
-            "_page=" + this.props.currentPage +
-            "&_limit=" + this.props.pageSize,
-            {withCredentials: true})
-            .then(r => {
-                this.props.setUsersTotalCount(r.data.totalDocs);
-                if (this.props.auth.isAuth)
-                axios.get("http://127.0.0.1:3033/api/profile/" + this.props.auth.userId)
-                    .then(r2 => {
-                        let followed = r2.data[0].followers;
-                        r.data.docs.map(u =>{
-                            u.followed = !!followed.includes(u._id);
-                            return u;
-                        })
-
-                        this.props.setUsers(r.data.docs);
-                        this.props.toggleIsFetching(false);
-                    });
-            });
-
+        userAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.setUsersTotalCount(data.totalDocs);
+            if (this.props.auth.isAuth)
+                getUser(this.props, data);
+            this.props.toggleIsFetching(false);
+        });
     }
 
     onPageChanged = (pageNumber) =>{
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(pageNumber);
-        axios
-            .get("http://localhost:3033/api/profile/get?" +
-                "_page=" + pageNumber +
-                "&_limit=" + this.props.pageSize,
-                {withCredentials: true})
-            .then(r => {
-                this.props.setUsersTotalCount(r.data.totalDocs);
-                axios.get("http://127.0.0.1:3033/api/profile/" + this.props.auth.userId)
-                    .then(r2 => {
-                        let followed = r2.data[0].followers;
-                        r.data.docs.map(u =>{
-                            u.followed = !!followed.includes(u._id);
-                            return u;
-                        })
-                        this.props.setUsers(r.data.docs);
-                        this.props.toggleIsFetching(false);
-                    });
-            });
-
+        userAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+            this.props.setUsersTotalCount(data.totalDocs);
+            getUser(this.props, data);
+        });
     }
 
     render() {
@@ -74,6 +57,7 @@ class UsersContainer extends React.Component{
                     unfollow={this.props.unfollow}
                     follow={this.props.follow}
                     auth={this.props.auth}
+                    getUser={this.getUser}
                 />}
         </>
     }

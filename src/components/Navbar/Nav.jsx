@@ -2,10 +2,18 @@ import React from 'react';
 import s from './Nav.module.css';
 import {NavLink} from "react-router-dom";
 
-const  Nav = () => {
+const  Nav = (props) => {
 	return (
 		<nav className={s.nav}>
-			<div className={s.item}><NavLink to="/profile" activeClassName={s.activeLink}>Profile</NavLink></div>
+			{props.auth.isAuth ?
+				<div className={s.item}>
+					<NavLink
+						to={"/profile/" + props.auth.userId}
+						activeClassName={s.activeLink}> Profile
+					</NavLink>
+				</div>
+			:<></>
+			}
 			<div className={s.item}><NavLink to="/dialogs" activeClassName={s.activeLink}>Massages</NavLink></div>
 			<div className={s.item}><NavLink to="/#" >News</NavLink></div>
 			<div className={s.item}><NavLink to="/#" >Music</NavLink></div>
