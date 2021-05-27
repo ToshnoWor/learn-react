@@ -39,7 +39,7 @@ const profileReducer = (state = initialize, action) => {
             return {
                 ...state,
                 posts: action.posts,
-                nextId: action.posts.length
+                nextId: action.posts ? action.posts.length : 0
             }
         default :
             return state;
@@ -60,6 +60,10 @@ export const getProfile = (userId) => {
                 dispatch(setUserProfile(r.data[0]));
                 dispatch(setUserPosts(r.data[0].posts));
             });
+        if (userId!==null) {
+            dispatch(setUserProfile(null));
+            dispatch(setUserPosts(null));
+        }
     }
 }
 

@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import Friends from "./Friends";
 import {getFriends, unfollow} from "../../redux/friends-reducer";
 import {Redirect} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class FriendsContainer extends React.Component{
     componentDidMount() {
@@ -23,4 +24,4 @@ let mapStateToProps = (state) => ({
     friends: state.friendsPage.friends
 });
 
-export default connect(mapStateToProps,{getFriends, unfollow})(FriendsContainer);
+export default withAuthRedirect(connect(mapStateToProps,{getFriends, unfollow})(FriendsContainer));
