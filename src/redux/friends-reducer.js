@@ -1,3 +1,5 @@
+import {userAPI} from "../api/api";
+
 const REFRESH_DATA = 'REFRESH_DATA';
 const ADD_FRIEND = 'ADD_FRIEND';
 const UNFOLLOW = 'UNFOLLOW';
@@ -38,7 +40,33 @@ const friendsReducer = (state = initialState, action) => {
 export const refreshFriends = () =>
     ({type: REFRESH_DATA });
 export const addFriend = (friend) => ({type: ADD_FRIEND, friend});
-export const unfollow = (p) => ({type: UNFOLLOW, p});
+export const unfollowSuccess = (p) => ({type: UNFOLLOW, p});
 
+export const getFriends = (userId) => {
+    return (dispatch) => {
+        dispatch(refreshFriends());
+        if (userId)
+            userAPI.getProfile(userId).then(r => {
+                if (r.status === 200)
+                    r.data[0].followers.map( p => {
+                        userAPI.getProfile(p).then(r2 =>{
+                            dispatch(addFriend(r2.data[0]));
+                            }
+                        )
+                        return p;
+                    })
+            });
+    }
+}
+
+export const unfollow = (auth, p) => {
+    return (dispatch) => {
+        userAPI.unfollow(auth, p._id).then(r => {
+            if (r.status === 200){
+                dispatch(unfollowSuccess(p));
+            }
+        });
+    }
+}
 
 export default friendsReducer;

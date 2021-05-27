@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Friends.module.css';
 import defaultPhoto from '../../assets/images/defaultUserMan.png';
 import {NavLink} from "react-router-dom";
-import {userAPI} from "../../api/api";
 
 const Friends = (props) =>{
     let friend = null;
@@ -14,11 +13,7 @@ const Friends = (props) =>{
                 <div className={s.name}>{p.name}</div>
             </NavLink>
                 <button className={s.buttonFrame} onClick={() => {
-                    userAPI.unfollow(props.auth, p._id).then(r => {
-                            if (r.status === 200){
-                                props.unfollow(p)
-                            }
-                        });
+                    props.unfollow(props.auth, p);
                 }}
                 >Unfriend</button>
 
