@@ -10,11 +10,11 @@ const ProfileInfo = (props) => {
 		return <Preloader />
 	return (
 		<div>
-			<div className={s.pro_logo}>
+			{/*<div className={s.pro_logo}>
 				<img
 					src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 					alt={"=("}/>
-			</div>
+			</div>*/}
 			<div className={s.ava_description}>
 				<div className={s.profile_logo}><img
 					src={props.profile.photo === null ? defaultPhotoMan : props.profile.photo}
@@ -23,7 +23,8 @@ const ProfileInfo = (props) => {
 								 profile_age={props.profile.age === null ? "" : props.profile.age}
 								 profile_sex={props.profile.type === null ? "" : props.profile.type}
 								 profile_city={props.profile.city === null ? "" : props.profile.city}
-								 profile_status={props.profile.status ? "online" : "offline"}/>
+								 profile_status={props.profile.status === null ? "" : props.profile.status}
+				/>
 			</div>
 		</div>
 	)
