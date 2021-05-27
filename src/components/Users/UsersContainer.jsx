@@ -7,6 +7,7 @@ import {
 } from "../../redux/users-reducer";
 import Users from './Users.jsx';
 import Preloader from "../common/Preloader/Preloader";
+import {compose} from "redux";
 
 class UsersContainer extends React.Component{
     componentDidMount() {
@@ -50,10 +51,12 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,
-    {
-        follow,
-        unfollow,
-        toggleFollowingProgress,
-        getUser
-})(UsersContainer);
+export default compose(
+    connect(mapStateToProps,
+        {
+            follow,
+            unfollow,
+            toggleFollowingProgress,
+            getUser
+        })
+)(UsersContainer);

@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from "react-redux";
 import Friends from "./Friends";
 import {getFriends, unfollow} from "../../redux/friends-reducer";
-import {Redirect} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 class FriendsContainer extends React.Component{
     componentDidMount() {
@@ -11,7 +11,6 @@ class FriendsContainer extends React.Component{
             this.props.getFriends(this.props.auth.userId);
     }
     render() {
-        if (!this.props.auth.isAuth) return <Redirect to={"login"}/>
         return <Friends
             friends={this.props.friends}
             unfollow={this.props.unfollow}
@@ -24,4 +23,7 @@ let mapStateToProps = (state) => ({
     friends: state.friendsPage.friends
 });
 
-export default withAuthRedirect(connect(mapStateToProps,{getFriends, unfollow})(FriendsContainer));
+export default compose(
+    connect(mapStateToProps,{getFriends, unfollow}),
+    withAuthRedirect
+)(FriendsContainer);
