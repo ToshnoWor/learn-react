@@ -41,8 +41,8 @@ export const auth = () => {
         dispatch(toggleIsFetching(true));
         userAPI.auth().then(r => {
             let {id, login, email} = r.data;
-            dispatch(setAuthUserData(id,email,login));
-            dispatch(setAccessToken(r.data.token));
+            //dispatch(setAuthUserData(id,email,login));
+            //dispatch(setAccessToken(r.data.token));
             dispatch(toggleIsFetching(false));
         });
     }

@@ -7,6 +7,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import NavContainer from "./components/Navbar/NavContainer";
+import LoginContainer from "./components/Login/LoginContainer";
 
 const App = () => {
 	return (
@@ -15,25 +16,15 @@ const App = () => {
 			<NavContainer/>
 			<div className='app_wrapper-content'>
 				<Route path='/profile/:userId?'
-				       render={() =>
-						   <ProfileContainer />
-				       }
-				/>
+				       render={() => <ProfileContainer /> } />
 				<Route path='/dialogs'
-				       render={() =>
-						   <DialogsContainer />
-				       }
-				/>
+				       render={() => <DialogsContainer /> } />
 				<Route path='/users'
-					   render={() =>
-						   <UsersContainer />
-					   }
-				/>
+					   render={() => <UsersContainer /> } />
 				<Route path='/friends'
-					   render={() =>
-						   <FriendsContainer />
-					   }
-				/>
+					   render={() => <FriendsContainer /> } />
+				<Route path='/login'
+					   render={() => <LoginContainer /> } />
 			</div>
 		</div>
 	);

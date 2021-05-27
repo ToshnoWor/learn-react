@@ -33,13 +33,16 @@ let Users = (props) => {
                             />
                         </NavLink>
                     </div>
-                    { u.followed
-                        ? <button disabled={props.followingInProgress.some(id => id === u._id)}
-                                  onClick={() => {props.unfollow(u._id, props.auth);}}>
-                            Unfollow</button>
-                        : <button disabled={props.followingInProgress.some(id => id === u._id)}
-                                  onClick={() => {props.follow(u._id, props.auth);}}>
-                            Follow</button>
+                    {
+                        props.auth.isAuth
+                            ? u.followed
+                                ? <button disabled={props.followingInProgress.some(id => id === u._id)}
+                                          onClick={() => {props.unfollow(u._id, props.auth);}}>
+                                    Unfollow</button>
+                                : <button disabled={props.followingInProgress.some(id => id === u._id)}
+                                          onClick={() => {props.follow(u._id, props.auth);}}>
+                                    Follow</button>
+                            : <></>
                     }
                 </div>
                 <div className={s.UserInfo}>

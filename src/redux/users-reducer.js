@@ -88,6 +88,10 @@ export const getUser = (currentPage, pageSize, auth) => {
                     dispatch(setUsers(data.docs));
                 });
             }
+            else {
+                //console.log(data)
+                dispatch(setUsers(data.docs));
+            }
         });
 
     }
