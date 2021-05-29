@@ -4,6 +4,8 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_POST = 'SET_USER_POST';
+const SAVE_STATUS = 'SAVE_STATUS';
+const UPDATE_NEW_STATUS = 'UPDATE_NEW_STATUS';
 
 let initialize = {
     profile: null,
@@ -14,7 +16,8 @@ let initialize = {
     //     {id: 3, post: 'Now using arrays'},
     //     {id: 4, post: 'As well as the map function'}
     // ],
-    newPostText: ''
+    newPostText: '',
+    newStatus: ''
 };
 
 const profileReducer = (state = initialize, action) => {
@@ -41,6 +44,21 @@ const profileReducer = (state = initialize, action) => {
                 posts: action.posts,
                 nextId: action.posts ? action.posts.length : 0
             }
+        case UPDATE_NEW_STATUS:{
+            return {
+                ...state,
+                newStatus: action.newStatus
+            }}
+        case SAVE_STATUS:
+        {
+            let newState = {
+                ...state,
+                profile: {...state.profile, status: state.newStatus},
+                newStatus: ''
+            };
+            console.log(newState);
+            return newState;
+        }
         default :
             return state;
     }
@@ -52,6 +70,8 @@ export const setUserProfile = (profile) =>
 export const updateNewPostText = (text) =>
     ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 export const setUserPosts = (posts) =>({ type: SET_USER_POST, posts: posts})
+export const updateNewStatus = (newStatus) => ({ type: UPDATE_NEW_STATUS, newStatus})
+export const saveStatusSuccess = () => ({type: SAVE_STATUS})
 
 export const getProfile = (userId) => {
     return (dispatch) => {
@@ -64,6 +84,16 @@ export const getProfile = (userId) => {
             dispatch(setUserProfile(null));
             dispatch(setUserPosts(null));
         }
+    }
+}
+
+export const saveStatus = (auth, newStatus) => {
+    return (dispatch) => {
+        userAPI.changeStatus(auth, newStatus)
+            .then(status => {
+                if(status === 200)
+                    dispatch(saveStatusSuccess());
+            });
     }
 }
 

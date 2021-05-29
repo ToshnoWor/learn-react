@@ -23,7 +23,7 @@ const ProfileInfo = (props) => {
 								 profile_age={props.profile.age === null ? "" : props.profile.age}
 								 profile_sex={props.profile.type === null ? "" : props.profile.type}
 								 profile_city={props.profile.city === null ? "" : props.profile.city}
-								 profile_status={props.profile.status === null ? "" : props.profile.status}
+								 //profile_status={props.profile.status === null ? "" : props.profile.status}
 				/>
 			</div>
 		</div>

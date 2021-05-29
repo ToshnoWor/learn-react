@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './ProfileSpecimen.module.css';
-import ProfileStatus from "./ProfoleStatus";
+import ProfileStatusContainer from "./ProfileStatus/ProfileStatusContainer";
 
 
 const ProfileSpecimen = (props) => {
@@ -20,7 +20,7 @@ const ProfileSpecimen = (props) => {
 
 					<div className={s.details_title}>Status:</div>
 					<div className={s.details_text}>
-						<ProfileStatus status={props.profile_status}/>
+						<ProfileStatusContainer/>
 					</div>
 				</div>
 			</div>

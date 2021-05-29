@@ -46,6 +46,20 @@ export const userAPI = {
                 }
             }
         )
+    },
+    changeStatus(auth, status){
+        console.log(auth);
+        return instanceLogin.put("profile/status",
+            {
+                "status": status
+            },
+            {
+                headers: {
+                    'auth-token': auth ? auth.accessToken : ''
+                }
+        }).then(r => {
+            return r.status;
+        });
     }
 }
 
