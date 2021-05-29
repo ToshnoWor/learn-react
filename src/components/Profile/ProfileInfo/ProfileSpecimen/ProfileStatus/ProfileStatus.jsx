@@ -1,30 +1,30 @@
 import React from 'react';
+import s from '../ProfileSpecimen.module.css'
 
 
 class ProfileStatus extends React.Component{
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
-    activateEditMode(){
+    activateEditMode = () => {
         this.setState({
             editMode: true
         })
     }
-    deactivateEditMode(){
+    deactivateEditMode = () => {
         this.setState({
             editMode: false
         });
     }
 
-    newStatus = React.createRef();
-
-    updateStatus(){
-        this.props.updateNewStatus(this.newStatus.current.value);
+    updateStatus = (e) => {
+        this.setState({status: e.currentTarget.value});
     }
 
     saveStatus(){
-        this.props.saveStatus(this.props.auth, this.props.newStatus);
+        this.props.saveStatus(this.props.auth, this.state.status);
         this.deactivateEditMode();
     }
 
@@ -32,22 +32,30 @@ class ProfileStatus extends React.Component{
         return (
             < >
                 {!this.state.editMode &&
-                    <div onDoubleClick={
+                    <div
+                        onDoubleClick={
                         this.props.auth.isAuth ?
-                        this.activateEditMode.bind(this) :
+                        this.activateEditMode :
                             () => {alert("It's not your page!")}
-                    }><span>{this.props.status}</span></div>
+                    }>
+                        <span className={s.spanStatus}>
+                            {
+                                !this.state.status
+                                ? "Not status"
+                                :this.state.status
+                            }
+                        </span>
+                    </div>
                 }
                 {this.state.editMode &&
                     <div>
-                        <input
+                        <input className={s.inputStatus}
                             autoFocus
-                            ref={this.newStatus}
                             //onBlur={this.deactivateEditMode.bind(this)}
-                            onChange={this.updateStatus.bind(this)}
-                            defaultValue={this.props.newStatus}
+                            onChange={this.updateStatus}
+                            value={this.state.status}
                         />
-                        <button
+                        <button className={s.button}
                             onClick={this.saveStatus.bind(this)}>Save</button>
                     </div>
                 }

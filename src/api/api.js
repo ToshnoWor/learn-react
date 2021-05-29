@@ -16,19 +16,6 @@ export const userAPI = {
             "_page=" + currentPage +
             "&_limit=" + pageSize).then(r => r.data);
     },
-    getProfile(userId) {
-        return instanceNotLogin.get("profile/" + userId).then(r => {
-            return  {
-                data: r.data,
-                status: r.status
-            }});
-    },
-    auth() {
-        return  instanceNotLogin.post("user/login", {
-            "email": "alekseikoval69@gmail.com",
-            "password": "22446688al"
-        });
-    },
     follow (auth, id) {
         return instanceLogin.post("profile/follow/"+ id, {},
             {
@@ -47,25 +34,32 @@ export const userAPI = {
             }
         )
     },
-    changeStatus(auth, status){
-        console.log(auth);
-        return instanceLogin.put("profile/status",
-            {
-                "status": status
-            },
-            {
-                headers: {
-                    'auth-token': auth ? auth.accessToken : ''
-                }
-        }).then(r => {
+}
+
+export const profileAPI = {
+    changeStatus(data){
+        return instanceLogin.put(
+            "profile/status",
+            data.content,
+            data.config
+        ).then(r => {
             return r.status;
         });
+    },
+    getProfile(userId) {
+        return instanceNotLogin.get("profile/" + userId).then(r => {
+            return  {
+                data: r.data,
+                status: r.status
+            }});
     }
 }
 
-
-
-
-
-
-
+export const authAPI = {
+    auth() {
+        return  instanceNotLogin.post("user/login", {
+            "email": "alekseikoval69@gmail.com",
+            "password": "22446688al"
+        });
+    }
+}

@@ -1,4 +1,4 @@
-import {userAPI} from "../api/api";
+import {profileAPI, userAPI} from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -79,7 +79,7 @@ export const getUser = (currentPage, pageSize, auth) => {
             dispatch(toggleIsFetching(false));
             dispatch(setUsersTotalCount(data.totalDocs));
             if (auth.isAuth){
-                userAPI.getProfile(auth.userId).then(r => {
+                profileAPI.getProfile(auth.userId).then(r => {
                     let followed = r.data[0].followers;
                     data.docs.map(u =>{
                         u.followed = !!followed.includes(u._id);

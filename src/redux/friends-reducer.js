@@ -1,4 +1,4 @@
-import {userAPI} from "../api/api";
+import {profileAPI, userAPI} from "../api/api";
 
 const REFRESH_DATA = 'REFRESH_DATA';
 const ADD_FRIEND = 'ADD_FRIEND';
@@ -46,10 +46,10 @@ export const getFriends = (userId) => {
     return (dispatch) => {
         dispatch(refreshFriends());
         if (userId)
-            userAPI.getProfile(userId).then(r => {
+            profileAPI.getProfile(userId).then(r => {
                 if (r.status === 200)
                     r.data[0].followers.map( p => {
-                        userAPI.getProfile(p).then(r2 =>{
+                        profileAPI.getProfile(p).then(r2 =>{
                             dispatch(addFriend(r2.data[0]));
                             }
                         )

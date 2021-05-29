@@ -7,8 +7,9 @@ import {compose} from "redux";
 
 class FriendsContainer extends React.Component{
     componentDidMount() {
-        if (!this.props.auth.isAuth)
+        if (this.props.auth.isAuth)
             this.props.getFriends(this.props.auth.userId);
+
     }
     render() {
         return <Friends
