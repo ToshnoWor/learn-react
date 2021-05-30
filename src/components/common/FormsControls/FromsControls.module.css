@@ -1,0 +1,25 @@
+.formControl {
+
+}
+
+.formControl.error input,
+.formControl.error textarea
+{
+    border: 2px solid red;
+}
+
+.formControl.error span {
+    text-align: end;
+    color: #860000;
+    background: #808080;
+    border-radius: 20px;
+    padding: 4px 10px 4px 10px;
+    font-weight: bold;
+    font-size: 11px;
+    box-shadow: -3px 3px 3px #5f5f5f;
+    position: fixed;
+    transform: translate(10px,2px);
+}
+.formControl.error .divSpanError{
+    text-align: end;
+}

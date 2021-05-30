@@ -4,7 +4,7 @@
 }
 .my_posts{
     font-size: 24px;
-    margin: 10px 0 0 10px;
+    margin: 10px 10px 0 10px;
 }
 .my_posts div{
     margin-top: 10px;
@@ -15,6 +15,9 @@
     resize: none;
     overflow: auto;
 
+}
+.my_posts button{
+    margin-top: 10px;
 }
 /* width */
 ::-webkit-scrollbar {
