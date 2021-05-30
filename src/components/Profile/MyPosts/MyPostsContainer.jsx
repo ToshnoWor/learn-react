@@ -1,17 +1,16 @@
 import MyPosts from "./MyPosts";
-import {createPost, updateNewPostText} from "../../../redux/profile-reducer";
+import {createPost} from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return{
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
+        isAuth: state.auth.userId === (state.profilePage.profile && state.profilePage.profile._id)
     }
 };
 
 const MyPostsContainer = connect(mapStateToProps, {
-    createPost,
-    updateNewPostText
+    createPost
 })(MyPosts);
 
 export default MyPostsContainer;

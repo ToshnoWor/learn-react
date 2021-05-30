@@ -34,7 +34,7 @@ class ProfileStatus extends React.Component{
                 {!this.state.editMode &&
                     <div
                         onDoubleClick={
-                        this.props.auth.isAuth ?
+                        this.props.isAuth ?
                         this.activateEditMode :
                             () => {alert("It's not your page!")}
                     }>

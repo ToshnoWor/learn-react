@@ -1,7 +1,6 @@
 import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_POST = 'SET_USER_POST';
 const SAVE_STATUS = 'SAVE_STATUS';
@@ -15,7 +14,6 @@ let initialize = {
     //     {id: 3, post: 'Now using arrays'},
     //     {id: 4, post: 'As well as the map function'}
     // ],
-    newPostText: ''
 };
 
 const profileReducer = (state = initialize, action) => {
@@ -23,13 +21,7 @@ const profileReducer = (state = initialize, action) => {
         case ADD_POST:
             return {
                 ...state,
-                posts: [...state.posts, state.newPostText],
-                newPostText: ''
-            };
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
+                posts: [...state.posts, action.newPost]
             };
         case SET_USER_PROFILE:
             return {
@@ -55,11 +47,9 @@ const profileReducer = (state = initialize, action) => {
     }
 }
 
-export const createPost = () => ({type: ADD_POST})
+export const createPost = (newPost) => ({type: ADD_POST, newPost})
 export const setUserProfile = (profile) =>
     ({type: SET_USER_PROFILE, profile})
-export const updateNewPostText = (text) =>
-    ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 export const setUserPosts = (posts) =>({ type: SET_USER_POST, posts: posts})
 export const saveStatusSuccess = (status) => ({type: SAVE_STATUS, status})
 

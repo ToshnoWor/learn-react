@@ -56,10 +56,12 @@ export const profileAPI = {
 }
 
 export const authAPI = {
-    auth() {
-        return  instanceNotLogin.post("user/login", {
-            "email": "alekseikoval69@gmail.com",
-            "password": "22446688al"
-        });
+    auth(data) {
+        return  instanceNotLogin.post("user/login", data
+            /*{
+                "email": "alekseikoval69@gmail.com",
+                "password": "22446688al"
+            }*/
+        );
     }
 }

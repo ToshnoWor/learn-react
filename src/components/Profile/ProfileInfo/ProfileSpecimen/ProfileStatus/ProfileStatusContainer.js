@@ -11,7 +11,7 @@ class ProfileStatusContainer extends React.Component{
             <ProfileStatus
                 status={this.props.status}
                 saveStatus={this.props.saveStatus}
-                auth={this.props.auth}
+                isAuth={this.props.isAuth}
             />
         )
     }
@@ -19,7 +19,7 @@ class ProfileStatusContainer extends React.Component{
 
 let mapStateToProps = (state) => ({
     status: state.profilePage.profile.status,
-    auth: state.auth
+    isAuth: state.profilePage.profile._id ===state.auth.userId
 });
 
 export default compose(

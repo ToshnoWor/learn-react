@@ -1,7 +1,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    grid-template-rows: 10fr 2fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: "dialogs message" "newMessage newMessage";
 }
 
@@ -28,28 +28,13 @@
 
 .newMessage {
     grid-area: newMessage;
-    display: grid;
-    grid-template-columns: 10fr 2fr;
-    grid-gap: 5px;
-    margin: 5px;
-}
-
-.newMessage textarea {
-    height: 90%;
-    width: 99%;
-    resize: none;
-}
-
-.newMessage > div:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-}
-.newMessage button{
-    height: 100%;
-    width: 100%;
     text-align: center;
 }
+.newMessage div{
+}
+.newMessage textarea {
+    resize: none;
+    width: 90%;
+    height: 50px;
+}
+

@@ -3,49 +3,61 @@ import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
 import button from '../cssModule/button.module.css';
+import {Field, reduxForm} from "redux-form";
 
-const Dialogs = (props) => {
+const MessageFrom = (props) => {
+	return <form onSubmit={props.handleSubmit}>
+		<div>
+			<Field
+				component={'textarea'}
+				name={'message'}
+				placeholder='Enter your message'
+			/>
+		</div>
+		<div>
+			<button>Enter</button>
+		</div>
+	</form>
+}
 
-	let state = props.messagesPage;
+const MessageReduxForm = reduxForm({
+	form: 'message'
+})(MessageFrom)
 
-	let dialogsElements = state.dialogs.map(d =>
-		<DialogItem name={d.name} key={d.id} id={d.id}/>
-		);
-	let messagesElements = state.messages.map(m => <Message message={m.message} key={m.id}/>);
-	let newMessageText = state.newMessageText;
+class Dialogs extends React.Component{
 
-
-	let createMessage = () => {
-		props.sendMessage();
+	state = {
+		...this.props.messagesPage
+	}
+	createMessage = (data) => {
+		this.props.sendMessage(data.message);
 	};
 
-	let changeMessageText = (e) => {
-		let text = e.target.value;
-		props.updateNewMessageBody(text)
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevProps !== this.props)
+			this.setState({
+				...this.props.messagesPage,
+				newMessageText: ''
+			})
 	}
 
-	return (
-		<div className={s.dialogs}>
-			<div className={s.dialogsItems}>
-				{dialogsElements}
-			</div>
-			<div className={s.messages}>
-				{messagesElements}
-			</div>
-			<div className={s.newMessage}>
-				<div>
-					<textarea
-						onChange={changeMessageText}
-						value={newMessageText}
-						placeholder='Enter your message'
-					/>
+	render() {
+		return (
+			<div className={s.dialogs}>
+				<div className={s.dialogsItems}>
+					{this.state.dialogs.map(d =>
+						<DialogItem name={d.name} key={d.id} id={d.id}/>
+					)}
 				</div>
-				<div>
-					<button onClick={createMessage}>Enter</button>
+				<div className={s.messages}>
+					{this.state.messages.map(m => <Message message={m.message} key={m.id}/>)}
+				</div>
+				<div className={s.newMessage}>
+					<MessageReduxForm onSubmit={this.createMessage} />
 				</div>
 			</div>
-		</div>
-	)
-};
+		)
+	}
+}
 
 export default Dialogs

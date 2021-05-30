@@ -36,10 +36,10 @@ export const setAuthUserData = (userId, email, login) =>
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const setAccessToken = (token) => ({type: SET_ACCESS_TOKEN, token})
 
-export const auth = () => {
+export const auth = (data) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
-        authAPI.auth().then(r => {
+        authAPI.auth(data).then(r => {
             let {id, login, email} = r.data;
             dispatch(setAuthUserData(id,email,login));
             dispatch(setAccessToken(r.data.token));
