@@ -3,6 +3,7 @@ import s from './Login.module.css';
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators/validators";
+import {Redirect} from "react-router-dom";
 
 const LoginForm = (props) => {
     return (
@@ -19,7 +20,6 @@ const LoginForm = (props) => {
             </div>
             <div>
                 <Field component={Input} type="checkbox" name={"rememberMe"}
-                       validate={[requiredField]}
                 /> remember me
             </div>
             <div>
@@ -35,13 +35,13 @@ const LoginReduxForm = reduxForm({
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        if (formData.rememberMe)
-            props.auth({
-                email: formData.login,
-                password: formData.pass
-            });
+        props.auth({
+            email: formData.login,
+            password: formData.pass,
+            rememberMe: formData.rememberMe
+        });
     }
-
+    if (props.isAuth) return <Redirect to={"/profile/"+props.authId}/>
     return (
         <div className={s.main}>
             <h1>Login</h1>

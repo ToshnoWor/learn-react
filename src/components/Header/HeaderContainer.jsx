@@ -5,10 +5,9 @@ import {auth} from "../../redux/auth-reducer";
 
 class HeaderContainer extends React.Component{
     componentDidMount() {
-        this.props.auth({
-            email: "alekseikoval69@gmail.com",
-            password: "22446688al"
-        });
+        //const content={email: "alekseikoval69@gmail.com",password: "22446688al"}
+        //this.props.auth(content);
+
     }
     render() {
         return <Header {...this.props} />}
