@@ -1,4 +1,5 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
@@ -40,10 +41,22 @@ export const auth = (data) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
         authAPI.auth(data).then(r => {
-            let {id, login, email} = r.data;
-            dispatch(setAuthUserData(id,email,login));
-            dispatch(setAccessToken(r.data.token));
-            dispatch(toggleIsFetching(false));
+            if (r.data.ressoltCode === 0) {
+                let {id, login, email} = r.data;
+                dispatch(setAuthUserData(id,email,login));
+                dispatch(setAccessToken(r.data.token));
+                dispatch(toggleIsFetching(false));
+                return;
+            }
+            if (r.data.field === "email"){
+                let action = stopSubmit('login',{login: r.data.message});
+                dispatch(action);
+                return;
+            }
+            if (r.data.field === "password"){
+                let action = stopSubmit('login',{pass: r.data.message});
+                dispatch(action);
+            }
         });
     }
 }

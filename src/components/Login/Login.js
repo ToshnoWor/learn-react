@@ -41,7 +41,7 @@ const Login = (props) => {
             rememberMe: formData.rememberMe
         });
     }
-    if (props.isAuth) return <Redirect to={"/profile/"+props.authId}/>
+    if (props.isAuth) return <Redirect to={"/profile/"}/>
     return (
         <div className={s.main}>
             <h1>Login</h1>

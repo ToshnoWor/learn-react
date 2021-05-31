@@ -14,15 +14,13 @@ class LoginContainer extends React.Component{
         return (
             <Login auth={this.props.auth}
                    isAuth={this.props.isAuth}
-                   authId={this.props.authId}
             />
         )
     }
 }
 
 let mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth,
-    authId: state.auth.userId
+    isAuth: state.auth.isAuth
 });
 
 let WithUrlDataContainerComponent = withRouter(LoginContainer);
