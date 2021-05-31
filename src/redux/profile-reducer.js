@@ -1,9 +1,11 @@
 import {profileAPI} from "../api/api";
+import {reset} from "redux-form";
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_POST = 'SET_USER_POST';
 const SAVE_STATUS = 'SAVE_STATUS';
+const DELETE_POST = 'DELETE_POST';
 
 let initialize = {
     profile: null,
@@ -42,6 +44,14 @@ const profileReducer = (state = initialize, action) => {
                 newStatus: ''
             };
         }
+        case DELETE_POST:
+        {
+            state.posts.splice(action.postId, 1);
+            return {
+                ...state,
+                posts: [...state.posts]
+            };
+        }
         default :
             return state;
     }
@@ -52,6 +62,7 @@ export const setUserProfile = (profile) =>
     ({type: SET_USER_PROFILE, profile})
 export const setUserPosts = (posts) =>({ type: SET_USER_POST, posts: posts})
 export const saveStatusSuccess = (status) => ({type: SAVE_STATUS, status})
+export const deletePost = (postId) => ({type: DELETE_POST, postId})
 
 export const getProfile = (userId) => {
     return (dispatch) => {
@@ -87,6 +98,48 @@ export const saveStatus = (auth, newStatus) => {
                     if(status === 200)
                         dispatch(saveStatusSuccess(newStatus));
                 });
+        }
+    }
+}
+
+export const addPost = (auth, post) => {
+    return (dispatch) => {
+        if (auth.isAuth){
+            profileAPI.addPost({
+                config: {
+                    headers: {
+                        'auth-token': auth.accessToken
+                    }
+                },
+                content: {
+                    post
+                }
+            })
+                .then(resultCode => {
+                    if (resultCode === 0){
+                        dispatch(createPost(post));
+                        dispatch(reset('post'));
+                    }
+                });
+        }
+    }
+}
+export const removePost = (auth, postId) =>{
+    return (dispatch) => {
+        if (auth.isAuth){
+            profileAPI.removePost({
+                config: {
+                    headers: {
+                        'auth-token': auth.accessToken
+                    }
+                },
+                id: postId
+            })
+                .then(resultCode => {
+                    if (resultCode === 0){
+                        dispatch(deletePost(postId));
+                    }
+                })
         }
     }
 }

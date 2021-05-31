@@ -27,10 +27,17 @@ const MyPosts = (props) => {
     let postsElements;
     let a = props.posts;
     if(a!=null && a!== 'undefined')
-        postsElements = a.map((p, id) => <Post key={id} message={p}/>);
+        postsElements = a.map((p, number) => {
+            return <Post key={number}
+                         postId={number}
+                         message={p}
+                         removePost={props.removePost}
+                         auth={props.auth}
+            />
+        });
 
 	let onSubmit = (data) =>{
-        props.createPost(data.post);
+        props.addPost(props.auth, data.post);
     }
     return (
         <div className={s.my_posts}>

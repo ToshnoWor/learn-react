@@ -1,7 +1,5 @@
 import * as axios from "axios";
 
-//const baseUrl = 'http://localhost:3033/api/';
-
 const instanceLogin = axios.create({
     withCredentials: true,
     baseURL: 'http://localhost:3033/api/'
@@ -52,16 +50,23 @@ export const profileAPI = {
                 data: r.data,
                 status: r.status
             }});
+    },
+    addPost(data){
+        return instanceLogin.post("profile/post",data.content,data.config)
+            .then(r => {
+                return r.data.resultCode;
+            })
+    },
+    removePost(data){
+        return instanceLogin.delete("profile/post/" + data.id, data.config)
+            .then(r => {
+                return r.data.resultCode;
+            })
     }
 }
 
 export const authAPI = {
     auth(data) {
-        return  instanceNotLogin.post("user/login", data
-            /*{
-                "email": "alekseikoval69@gmail.com",
-                "password": "22446688al"
-            }*/
-        );
+        return  instanceNotLogin.post("user/login", data);
     }
 }
