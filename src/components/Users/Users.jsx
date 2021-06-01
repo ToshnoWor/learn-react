@@ -3,7 +3,7 @@ import s from './users.module.css';
 import userPhoto from '../../assets/images/defaultUserMan.png';
 import {NavLink} from "react-router-dom";
 
-let Users = (props) => {
+const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++){
