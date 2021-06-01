@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="new functional:&#10;add posts auth user, and&#10;remove posts">
-      <change afterPath="$PROJECT_DIR$/src/redux/auth-selectors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/users-selectors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Users/Users.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/Users.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/users-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/users-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/users-selectors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/users-selectors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +176,7 @@
       <workItem from="1622312219924" duration="9970000" />
       <workItem from="1622395000142" duration="26089000" />
       <workItem from="1622533027580" duration="3967000" />
-      <workItem from="1622557639742" duration="2729000" />
+      <workItem from="1622557639742" duration="3988000" />
     </task>
     <task id="LOCAL-00001" summary="action creator, type">
       <created>1586426190473</created>
@@ -439,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622536410387</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="add selectors">
+      <created>1622560609433</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1622560609433</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -471,7 +476,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="life cycle methods, componentDidMount" />
     <MESSAGE value="pagination" />
     <MESSAGE value="Presentation and Container Components" />
     <MESSAGE value="add Preloader" />
@@ -496,7 +500,8 @@
     <MESSAGE value="stopSubmit" />
     <MESSAGE value="new functional:&#10;add posts auth user, and&#10;remove posts" />
     <MESSAGE value="add logout&#10;add initialized app" />
-    <option name="LAST_COMMIT_MESSAGE" value="add logout&#10;add initialized app" />
+    <MESSAGE value="add selectors" />
+    <option name="LAST_COMMIT_MESSAGE" value="add selectors" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>
