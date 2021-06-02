@@ -12,7 +12,7 @@ let initialState = {
     login: null,
     isAuth: false,
     isFetching: false,
-    accessToken: null
+    token: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -26,7 +26,7 @@ const authReducer = (state = initialState, action) => {
         case SET_ACCESS_TOKEN:
             return {
                 ...state,
-                accessToken: action.token
+                token: action.token
             }
         case LOGOUT:
             return {
@@ -37,10 +37,9 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserData = (userId, email, login) =>
-    ({type: SET_USER_DATA, data: {userId, email, login}});
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
-export const setAccessToken = (token) => ({type: SET_ACCESS_TOKEN, token})
+export const setAuthUserData = (userId, email, login, token) =>
+    ({type: SET_USER_DATA, data: {userId, email, login, token}})
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const logout = () => ({type: LOGOUT})
 
 export const auth = (data) => {
@@ -49,8 +48,7 @@ export const auth = (data) => {
         return authAPI.auth(data).then(r => {
             if (r.data.ressoltCode === 0) {
                 let {id, login, email} = r.data;
-                dispatch(setAuthUserData(id,email,login));
-                dispatch(setAccessToken(r.data.token));
+                dispatch(setAuthUserData(id,email,login, r.data.token));
                 dispatch(toggleIsFetching(false));
                 return r.data.ressoltCode;
             }

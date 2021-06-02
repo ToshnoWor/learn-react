@@ -89,7 +89,7 @@ export const saveStatus = (auth, newStatus) => {
                 },
                 config:{
                     headers: {
-                        'auth-token': auth.accessToken
+                        'auth-token': auth.token
                     }
                 }
             }
@@ -108,7 +108,7 @@ export const addPost = (auth, post) => {
             profileAPI.addPost({
                 config: {
                     headers: {
-                        'auth-token': auth.accessToken
+                        'auth-token': auth.token
                     }
                 },
                 content: {
@@ -130,7 +130,7 @@ export const removePost = (auth, postId) =>{
             profileAPI.removePost({
                 config: {
                     headers: {
-                        'auth-token': auth.accessToken
+                        'auth-token': auth.token
                     }
                 },
                 id: postId

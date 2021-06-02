@@ -10,7 +10,7 @@ let initialState = {
     login: null,
     isAuth: false,
     isFetching: false,
-    accessToken: null
+    token: null
 }
 
 const friendsReducer = (state = initialState, action) => {

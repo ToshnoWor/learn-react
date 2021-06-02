@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) => {
     return{
         posts: state.profilePage.posts,
-        auth: state.auth,
+        token: state.auth.token,
         isAuth: state.auth.userId === (state.profilePage.profile && state.profilePage.profile._id)
     }
 };

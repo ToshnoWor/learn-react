@@ -18,7 +18,7 @@ export const userAPI = {
         return instanceLogin.post("profile/follow/"+ id, {},
             {
                 headers: {
-                    'auth-token': auth ? auth.accessToken : ''
+                    'auth-token': auth ? auth.token : ''
                 }
             }
         );
@@ -27,7 +27,7 @@ export const userAPI = {
         return instanceLogin.delete("profile/unfollow/"+id,
             {
                 headers: {
-                    'auth-token': auth ? auth.accessToken : ''
+                    'auth-token': auth ? auth.token : ''
                 }
             }
         )
