@@ -6,16 +6,14 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_POST = 'SET_USER_POST';
 const SAVE_STATUS = 'SAVE_STATUS';
 const DELETE_POST = 'DELETE_POST';
+const SAVE_AGE = 'SAVE_AGE';
+const SAVE_TYPE = 'SAVE_TYPE';
+const SAVE_CITY = 'SAVE_CITY';
+const SAVE_USER_NAME = 'SAVE_USER_NAME';
 
 let initialize = {
     profile: null,
-    posts: null,
-    //     [
-    //     {id: 1, post: 'Hi, how are you?'},
-    //     {id: 2, post: 'It\'s my first post'},
-    //     {id: 3, post: 'Now using arrays'},
-    //     {id: 4, post: 'As well as the map function'}
-    // ],
+    posts: null
 };
 
 const profileReducer = (state = initialize, action) => {
@@ -40,8 +38,35 @@ const profileReducer = (state = initialize, action) => {
         {
             return {
                 ...state,
-                profile: {...state.profile, status: action.status},
-                newStatus: ''
+                profile: {...state.profile, status: action.status}
+            };
+        }
+        case SAVE_AGE:
+        {
+            return {
+                ...state,
+                profile: {...state.profile, age: action.age}
+            };
+        }
+        case SAVE_TYPE:
+        {
+            return {
+                ...state,
+                profile: {...state.profile, type: action.typeValue}
+            };
+        }
+        case SAVE_CITY:
+        {
+            return {
+                ...state,
+                profile: {...state.profile, city: action.city}
+            };
+        }
+        case SAVE_USER_NAME:
+        {
+            return {
+                ...state,
+                profile: {...state.profile, name: action.name}
             };
         }
         case DELETE_POST:
@@ -62,6 +87,10 @@ export const setUserProfile = (profile) =>
     ({type: SET_USER_PROFILE, profile})
 export const setUserPosts = (posts) =>({ type: SET_USER_POST, posts: posts})
 export const saveStatusSuccess = (status) => ({type: SAVE_STATUS, status})
+const saveAgeSuccess = (age) => ({type: SAVE_AGE, age})
+const saveTypeSuccess = (typeValue) => ({type: SAVE_TYPE, typeValue})
+const saveCitySuccess = (city) => ({type: SAVE_TYPE, city})
+const saveNameSuccess = (name) => ({type: SAVE_TYPE, name})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 
 export const getProfile = (userId) => {
@@ -98,6 +127,113 @@ export const saveStatus = (auth, newStatus) => {
                     if(status === 200)
                         dispatch(saveStatusSuccess(newStatus));
                 });
+        }
+    }
+}
+
+export const saveAge = (auth, newAge) => {
+    return (dispatch) => {
+        let data = null;
+        if (auth.isAuth){
+            data = {
+                auth: auth,
+                content: {
+                    age: newAge
+                },
+                config:{
+                    headers: {
+                        'auth-token': auth.token
+                    }
+                }
+            }
+            profileAPI.changeAge(data).then(
+                status => {
+                    if (status===0){
+                        dispatch(saveAgeSuccess(newAge));
+                    }
+                }
+            )
+        }
+    }
+}
+
+export const saveType = (auth, newType) => {
+    return (dispatch) => {
+        let data = null;
+        if (auth.isAuth){
+            data = {
+                auth: auth,
+                value: 'type',
+                content: {
+                    type: newType
+                },
+                config:{
+                    headers: {
+                        'auth-token': auth.token
+                    }
+                }
+            }
+            profileAPI.changeValue(data).then(
+                status => {
+                    if (status===0){
+                        dispatch(saveTypeSuccess(newType));
+                    }
+                }
+            )
+        }
+    }
+}
+
+export const saveCity = (auth, newCity) => {
+    return (dispatch) => {
+        let data = null;
+        if (auth.isAuth){
+            data = {
+                auth: auth,
+                value: 'city',
+                content: {
+                    city: newCity
+                },
+                config:{
+                    headers: {
+                        'auth-token': auth.token
+                    }
+                }
+            }
+            profileAPI.changeValue(data).then(
+                status => {
+                    if (status===0){
+                        dispatch(saveCitySuccess(newCity));
+                    }
+                }
+            )
+        }
+    }
+}
+
+export const saveName = (auth, newName) => {
+    return (dispatch) => {
+        let data = null;
+        if (auth.isAuth){
+            data = {
+                auth: auth,
+                value: 'name',
+                content: {
+                    name: newName
+                },
+                config:{
+                    headers: {
+                        'auth-token': auth.token
+                    }
+                }
+            }
+            profileAPI.changeValue(data).then(
+                status => {
+                    if (status===0){
+                        dispatch(saveNameSuccess(newName));
+                    }
+                }
+            )
         }
     }
 }

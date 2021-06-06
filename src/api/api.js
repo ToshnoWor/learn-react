@@ -62,7 +62,25 @@ export const profileAPI = {
             .then(r => {
                 return r.data.resultCode;
             })
-    }
+    },
+    changeAge(data){
+        return instanceLogin.put(
+            "profile/age",
+            data.content,
+            data.config
+        ).then(r => {
+            return r.data.resultCode;
+        })
+    },
+    changeValue(data){
+        return instanceLogin.put(
+            "profile/"+data.value,
+            data.content,
+            data.config
+        ).then(r => {
+            return r.data.resultCode;
+        })
+    },
 }
 
 export const authAPI = {

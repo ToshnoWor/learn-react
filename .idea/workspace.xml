@@ -19,14 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="hook, useEffect">
+    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="shouldComponentUpdate, PureComponent, memo&#10;change in auth reducer">
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeAgeContainer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeCityContainer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeNameContainer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeTypeContainer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeWrapper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/profile-selectors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPostsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPostsContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/auth-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/friends-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/friends-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileSpecimen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileSpecimen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileSpecimen.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileSpecimen.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileStatus/ProfileStatusWithHooks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileStatus/ProfileStatusWithHooks.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profile-reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,8 +44,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -80,7 +84,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileStatus" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -98,11 +102,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\Diplom\learn-react\src\components\Profile\ProfileInfo\ProfileSpecimen\ChangeWrapper" />
       <recent name="E:\Project\Diplom\learn-react\src\components\Profile\ProfileInfo\ProfileSpecimen\ProfileStatus" />
       <recent name="E:\Project\Diplom\learn-react\src\redux" />
       <recent name="E:\Project\Diplom\learn-react\src\components\Friends" />
       <recent name="E:\Project\Diplom\learn-react\src\components\Header" />
-      <recent name="E:\Project\Diplom\learn-react\src\components\Profile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Project\Diplom\learn-react\src\components\Profile\ProfileInfo\ProfileSpecimen\ProfileStatus" />
@@ -182,7 +186,11 @@
       <workItem from="1622533027580" duration="3967000" />
       <workItem from="1622557639742" duration="4638000" />
       <workItem from="1622591308529" duration="2306000" />
-      <workItem from="1622599655571" duration="7663000" />
+      <workItem from="1622599655571" duration="7888000" />
+      <workItem from="1622810871179" duration="2301000" />
+      <workItem from="1622823853010" duration="10000" />
+      <workItem from="1622825186399" duration="620000" />
+      <workItem from="1622992675096" duration="4937000" />
     </task>
     <task id="LOCAL-00001" summary="action creator, type">
       <created>1586426190473</created>
@@ -471,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622603436173</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="shouldComponentUpdate, PureComponent, memo&#10;change in auth reducer">
+      <created>1622609102957</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1622609102957</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="mapDispatchToProps to object" />
     <MESSAGE value="add ProfileContainer.jsx&#10;add API in ProfileContainer.jsx" />
     <MESSAGE value="withRouter" />
     <MESSAGE value="new API Server" />
@@ -528,7 +542,8 @@
     <MESSAGE value="add lib reselect" />
     <MESSAGE value="hook, useState" />
     <MESSAGE value="hook, useEffect" />
-    <option name="LAST_COMMIT_MESSAGE" value="hook, useEffect" />
+    <MESSAGE value="shouldComponentUpdate, PureComponent, memo&#10;change in auth reducer" />
+    <option name="LAST_COMMIT_MESSAGE" value="shouldComponentUpdate, PureComponent, memo&#10;change in auth reducer" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

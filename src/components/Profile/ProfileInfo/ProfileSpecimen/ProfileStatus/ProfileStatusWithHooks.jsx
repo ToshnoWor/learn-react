@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import s from '../ProfileSpecimen.module.css'
+import s from '../ProfileSpecimen.module.css';
 
 
 const ProfileStatusWithHooks  = (props) => {
@@ -31,7 +31,7 @@ const ProfileStatusWithHooks  = (props) => {
                             ? activateMode//this.activateEditMode
                             : () => {alert("It's not your page!")}
                     }>
-                        <span className={s.spanStatus}>
+                        <span className={s.span}>
                             {
                                 !status
                                     ? "Not status"
