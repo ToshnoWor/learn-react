@@ -24,15 +24,18 @@ const PostReduxForm = reduxForm({
 const MyPosts = React.memo(props => {
     let postsElements;
     let a = props.posts;
-    if (a != null && a !== 'undefined')
-        postsElements = a.map((p, number) => {
-            return <Post key={number}
-                         postId={number}
-                         message={p}
-                         removePost={props.removePost}
-                         auth={{isAuth: props.isAuth, token: props.token}}
-            />
-        });
+    if (a != null && a !== 'undefined') {
+        postsElements = [...a]
+            .reverse()
+            .map((p, number) => {
+                return <Post key={number}
+                             postId={a.length-1-number}
+                             message={p}
+                             removePost={props.removePost}
+                             auth={{isAuth: props.isAuth, token: props.token}}
+                />
+            });
+    }
 
     let onSubmit = (data) => {
         props.addPost({isAuth: props.isAuth, token: props.token}, data.post);

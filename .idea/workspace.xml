@@ -19,19 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="shouldComponentUpdate, PureComponent, memo&#10;change in auth reducer">
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeAgeContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeCityContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeNameContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeTypeContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ChangeWrapper/ChangeWrapper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/profile-selectors.js" afterDir="false" />
+    <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="add fun change full fields profile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileSpecimen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileSpecimen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileSpecimen.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileSpecimen.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileStatus/ProfileStatusWithHooks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileSpecimen/ProfileStatus/ProfileStatusWithHooks.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profile-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +180,7 @@
       <workItem from="1622810871179" duration="2301000" />
       <workItem from="1622823853010" duration="10000" />
       <workItem from="1622825186399" duration="620000" />
-      <workItem from="1622992675096" duration="4937000" />
+      <workItem from="1622992675096" duration="6289000" />
     </task>
     <task id="LOCAL-00001" summary="action creator, type">
       <created>1586426190473</created>
@@ -486,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622609102957</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="add fun change full fields profile">
+      <created>1622998552793</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1622998552793</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add ProfileContainer.jsx&#10;add API in ProfileContainer.jsx" />
     <MESSAGE value="withRouter" />
     <MESSAGE value="new API Server" />
     <MESSAGE value="follow-unfollow api" />
@@ -543,7 +539,8 @@
     <MESSAGE value="hook, useState" />
     <MESSAGE value="hook, useEffect" />
     <MESSAGE value="shouldComponentUpdate, PureComponent, memo&#10;change in auth reducer" />
-    <option name="LAST_COMMIT_MESSAGE" value="shouldComponentUpdate, PureComponent, memo&#10;change in auth reducer" />
+    <MESSAGE value="add fun change full fields profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="add fun change full fields profile" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>
