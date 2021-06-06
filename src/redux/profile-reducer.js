@@ -71,10 +71,11 @@ const profileReducer = (state = initialize, action) => {
         }
         case DELETE_POST:
         {
-            state.posts.splice(action.postId, 1);
+            let newPosts = [...state.posts];
+            newPosts.splice(action.postId, 1);
             return {
                 ...state,
-                posts: [...state.posts]
+                posts: newPosts
             };
         }
         default :
