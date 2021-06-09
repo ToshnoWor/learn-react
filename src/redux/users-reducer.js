@@ -12,7 +12,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 let initialState = {
     users: [],
     pageSize: 2,
-    totalUserCount: 7,
+    totalUserCount: 0,
     currentPage: 1,
     isFetching: false,
     followingInProgress: []
@@ -72,26 +72,27 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const toggleFollowingProgress = (isFetching, userId) =>
     ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId});
 
-export const requestUser = (page, pageSize, auth) => async (dispatch) => {
-    let r = null;
+export const requestUser = (page, pageSize, auth) => {
+    return async (dispatch) => {
+        let r = null;
 
-    dispatch(toggleIsFetching(true));
-    dispatch(setCurrentPage(page));
+        dispatch(toggleIsFetching(true));
+        dispatch(setCurrentPage(page));
 
-    let data = await userAPI.getUsers(page, pageSize);
+        let data = await userAPI.getUsers(page, pageSize);
+        if (auth.isAuth) {
+            r = await profileAPI.getProfile(auth.userId);
+            let followed = r?.data.profile?.followers;
+            data.docs.map(u => {
+                u.followed = !!followed.includes(u._id);
+                return u;
+            });
+        }
 
-    dispatch(setUsersTotalCount(data?.totalDocs));
-    if (auth.isAuth) {
-        r = await profileAPI.getProfile(auth.userId);
-        let followed = r?.data.profile?.followers;
-        data.docs.map(u => {
-            u.followed = !!followed.includes(u._id);
-            return u;
-        });
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.docs));
+        dispatch(setUsersTotalCount(data.totalDocs));
     }
-
-    dispatch(setUsers(data.docs));
-    dispatch(toggleIsFetching(false));
 }
 
 const followUnfollowFlow = async (dispatch, id, auth, apiMethod, actionCreator) => {

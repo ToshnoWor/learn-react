@@ -20,20 +20,19 @@ import {getAuth} from "../../redux/auth-selectors";
 
 class UsersContainer extends React.Component{
     componentDidMount() {
-        let {getUser, currentPage, pageSize, auth} = this.props;
-        getUser(currentPage, pageSize, auth);
+        let {currentPage, pageSize, auth} = this.props;
+        this.props.getUser(currentPage, pageSize, auth);
     }
 
     onPageChanged = (pageNumber) => {
-        let {getUser, pageSize, auth} = this.props;
-        getUser(pageNumber, pageSize, auth);
+        let {pageSize, auth} = this.props;
+        this.props.getUser(pageNumber, pageSize, auth);
     }
 
     render() {
         return <>
-            {this.props.isFetching
-                ? <Preloader />
-                : <Users
+            {this.props.isFetching ? <Preloader /> : null}
+                <Users
                     totalUserCount={this.props.totalUserCount}
                     pageSize={this.props.pageSize}
                     currentPage={this.props.currentPage}
@@ -45,7 +44,7 @@ class UsersContainer extends React.Component{
                     getUser={this.getUser}
                     toggleFollowingProgress={this.props.toggleFollowingProgress}
                     followingInProgress={this.props.followingInProgress}
-                />}
+                />
         </>
     }
 }

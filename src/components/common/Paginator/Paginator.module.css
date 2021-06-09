@@ -1,11 +1,27 @@
-.selectedPage{
-    font-weight: bold;
-}
 .pageList{
     display: flex;
     margin-top: 20px;
+    margin-left: 20px;
+}
+.pageNumber{
+    cursor: pointer;
+    padding: 5px;
+    text-align: center;
+    margin: 0 2px 0 2px;
+    border: 1px solid #5f5f5f;
+}
+/*.pageNumber > text{
+    width: 100%;
+}*/
+.selectedPage{
+    font-weight: bold;
+    border: 2px solid black;
 }
 .pageList > div{
-    cursor: pointer;
-    margin-left: 5px;
+    min-height: 20px;
+    min-width: 20px;
+}
+.pageList > div > button{
+    height: 100%;
+    width: 100%;
 }
