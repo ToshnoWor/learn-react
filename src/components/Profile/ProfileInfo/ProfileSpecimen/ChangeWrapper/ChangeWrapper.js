@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import s from '../ProfileSpecimen.module.css';
 
 const ChangeWrapper = (props) => {
@@ -9,6 +9,10 @@ const ChangeWrapper = (props) => {
     const activateMode = () => {
         setEditMode(true);
     }
+
+    useEffect(() => {
+        setValue(props.state.value);
+    }, [props.state.value]);
 
     const deactivateMode = () => {
         setEditMode(false);

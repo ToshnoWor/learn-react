@@ -1,10 +1,10 @@
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN';
-const LOGOUT = 'LOGOUT';
+const SET_USER_DATA = 'auth/SET_USER_DATA';
+const TOGGLE_IS_FETCHING = 'auth/TOGGLE_IS_FETCHING';
+const SET_ACCESS_TOKEN = 'auth/SET_ACCESS_TOKEN';
+const LOGOUT = 'auth/LOGOUT';
 
 let initialState = {
     userId: null,
@@ -42,28 +42,29 @@ export const setAuthUserData = (userId, email, login, token) =>
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const logout = () => ({type: LOGOUT})
 
-export const auth = (data) => {
-    return (dispatch) => {
-        dispatch(toggleIsFetching(true));
-        return authAPI.auth(data).then(r => {
-            if (r.data.ressoltCode === 0) {
-                let {id, login, email} = r.data;
-                dispatch(setAuthUserData(id,email,login, r.data.token));
-                dispatch(toggleIsFetching(false));
-                return r.data.ressoltCode;
-            }
-            if (r.data.field === "email"){
-                let action = stopSubmit('login',{login: r.data.message});
-                dispatch(action);
-                return r.data.ressoltCode;
-            }
-            if (r.data.field === "password"){
-                let action = stopSubmit('login',{pass: r.data.message});
-                dispatch(action);
-                return r.data.ressoltCode;
-            }
-        });
+export const auth = (data) => async (dispatch) => {
+    dispatch(toggleIsFetching(true));
+
+    let r = await authAPI.auth(data);
+
+    if (r.data.ressoltCode === 0) {
+        let {id, login, email} = r.data;
+        dispatch(setAuthUserData(id,email,login, r.data.token));
+        return r.data.ressoltCode;
     }
+    if (r.data.field === "email"){
+        let action = stopSubmit('login',{login: r.data.message});
+        dispatch(action);
+        return r.data.ressoltCode;
+    }
+    if (r.data.field === "password"){
+        let action = stopSubmit('login',{pass: r.data.message});
+        dispatch(action);
+        return r.data.ressoltCode;
+    }
+
+    dispatch(toggleIsFetching(false));
 }
+
 
 export default authReducer;

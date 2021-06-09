@@ -46,14 +46,3 @@
     align-items: flex-start;
     font-size: 18px;
 }
-.selectedPage{
-    font-weight: bold;
-}
-.pageList{
-    display: flex;
-    margin-top: 20px;
-}
-.pageList > div{
-    cursor: pointer;
-    margin-left: 5px;
-}

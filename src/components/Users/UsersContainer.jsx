@@ -20,11 +20,13 @@ import {getAuth} from "../../redux/auth-selectors";
 
 class UsersContainer extends React.Component{
     componentDidMount() {
-        this.props.getUser(this.props.currentPage, this.props.pageSize, this.props.auth);
+        let {getUser, currentPage, pageSize, auth} = this.props;
+        getUser(currentPage, pageSize, auth);
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.getUser(pageNumber, this.props.pageSize, this.props.auth);
+        let {getUser, pageSize, auth} = this.props;
+        getUser(pageNumber, pageSize, auth);
     }
 
     render() {
@@ -47,18 +49,6 @@ class UsersContainer extends React.Component{
         </>
     }
 }
-
-/*let mapStateToProps = (state) => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUserCount: state.usersPage.totalUserCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        auth: state.auth,
-        followingInProgress: state.usersPage.followingInProgress
-    }
-}*/
 let mapStateToProps = (state) => {
     return {
         users: getUsers(state),

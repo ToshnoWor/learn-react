@@ -2,8 +2,8 @@ import {profileAPI} from "../api/api";
 import {reset} from "redux-form";
 
 const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_USER_POST = 'SET_USER_POST';
+const SET_USER_DATA = 'profile/SET_USER_DATA';
+//const SET_USER_POST = 'SET_USER_POST';
 const SAVE_STATUS = 'SAVE_STATUS';
 const DELETE_POST = 'DELETE_POST';
 const SAVE_AGE = 'SAVE_AGE';
@@ -23,54 +23,53 @@ const profileReducer = (state = initialize, action) => {
                 ...state,
                 posts: [...state.posts, action.newPost]
             };
-        case SET_USER_PROFILE:
+        case SET_USER_DATA:
+            let {profile, posts} = action.data;
             return {
                 ...state,
-                profile: action.profile
+                profile: profile,
+                posts: posts,
+                nextId: posts
+                    ? posts.length
+                    : 0
             };
-        case SET_USER_POST:
+        /*case SET_USER_POST:
             return {
                 ...state,
                 posts: action.posts,
                 nextId: action.posts ? action.posts.length : 0
-            }
-        case SAVE_STATUS:
-        {
+            }*/
+        case SAVE_STATUS: {
             return {
                 ...state,
                 profile: {...state.profile, status: action.status}
             };
         }
-        case SAVE_AGE:
-        {
+        case SAVE_AGE: {
             return {
                 ...state,
                 profile: {...state.profile, age: action.age}
             };
         }
-        case SAVE_TYPE:
-        {
+        case SAVE_TYPE: {
             return {
                 ...state,
                 profile: {...state.profile, type: action.typeValue}
             };
         }
-        case SAVE_CITY:
-        {
+        case SAVE_CITY: {
             return {
                 ...state,
                 profile: {...state.profile, city: action.city}
             };
         }
-        case SAVE_USER_NAME:
-        {
+        case SAVE_USER_NAME: {
             return {
                 ...state,
                 profile: {...state.profile, name: action.name}
             };
         }
-        case DELETE_POST:
-        {
+        case DELETE_POST: {
             let newPosts = [...state.posts];
             newPosts.splice(action.postId, 1);
             return {
@@ -84,9 +83,9 @@ const profileReducer = (state = initialize, action) => {
 }
 
 export const createPost = (newPost) => ({type: ADD_POST, newPost})
-export const setUserProfile = (profile) =>
-    ({type: SET_USER_PROFILE, profile})
-export const setUserPosts = (posts) =>({ type: SET_USER_POST, posts: posts})
+export const setUserData = (data) =>
+    ({type: SET_USER_DATA, data})
+/*export const setUserPosts = (posts) =>({ type: SET_USER_POST, posts: posts})*/
 export const saveStatusSuccess = (status) => ({type: SAVE_STATUS, status})
 const saveAgeSuccess = (age) => ({type: SAVE_AGE, age})
 const saveTypeSuccess = (typeValue) => ({type: SAVE_TYPE, typeValue})
@@ -94,189 +93,159 @@ const saveCitySuccess = (city) => ({type: SAVE_TYPE, city})
 const saveNameSuccess = (name) => ({type: SAVE_TYPE, name})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 
-export const getProfile = (userId) => {
-    return (dispatch) => {
-        if (userId)
-            profileAPI.getProfile(userId).then(r => {
-                dispatch(setUserProfile(r.data[0]));
-                dispatch(setUserPosts(r.data[0].posts));
-            });
-        if (userId!==null) {
-            dispatch(setUserProfile(null));
-            dispatch(setUserPosts(null));
-        }
-    }
+export const getProfile = (userId) => async (dispatch) => {
+    let r = {};
+
+    if (userId)
+        r = await profileAPI.getProfile(userId);
+
+    dispatch(setUserData({profile: r.data.profile, posts: r.data.posts}));
 }
 
-export const saveStatus = (auth, newStatus) => {
-    return (dispatch) => {
-        let data = null;
-        if (auth.isAuth){
-            data = {
-                auth: auth,
-                content: {
-                    status: newStatus
-                },
-                config:{
-                    headers: {
-                        'auth-token': auth.token
-                    }
+export const saveStatus = (auth, newStatus) => async (dispatch) => {
+    let data = null;
+    let status = null;
+    if (auth.isAuth) {
+        data = {
+            auth: auth,
+            content: {
+                status: newStatus
+            },
+            config: {
+                headers: {
+                    'auth-token': auth.token
                 }
             }
-            profileAPI.changeStatus(data)
-                .then(status => {
-                    if(status === 200)
-                        dispatch(saveStatusSuccess(newStatus));
-                });
         }
+        status = await profileAPI.changeStatus(data);
+        if (status === 200)
+            dispatch(saveStatusSuccess(newStatus));
     }
 }
 
-export const saveAge = (auth, newAge) => {
-    return (dispatch) => {
-        let data = null;
-        if (auth.isAuth){
-            data = {
-                auth: auth,
-                content: {
-                    age: newAge
-                },
-                config:{
-                    headers: {
-                        'auth-token': auth.token
-                    }
+export const saveAge = (auth, newAge) => async (dispatch) => {
+    let data = null;
+    let status = null;
+    if (auth.isAuth) {
+        data = {
+            auth: auth,
+            content: {
+                age: newAge
+            },
+            config: {
+                headers: {
+                    'auth-token': auth.token
                 }
             }
-            profileAPI.changeAge(data).then(
-                status => {
-                    if (status===0){
-                        dispatch(saveAgeSuccess(newAge));
-                    }
-                }
-            )
+        }
+        status = await profileAPI.changeAge(data);
+        if (status === 0) {
+            dispatch(saveAgeSuccess(newAge));
         }
     }
 }
 
-export const saveType = (auth, newType) => {
-    return (dispatch) => {
-        let data = null;
-        if (auth.isAuth){
-            data = {
-                auth: auth,
-                value: 'type',
-                content: {
-                    type: newType
-                },
-                config:{
-                    headers: {
-                        'auth-token': auth.token
-                    }
+export const saveType = (auth, newType) => async (dispatch) => {
+    let data = null;
+    let status = null;
+    if (auth.isAuth) {
+        data = {
+            auth: auth,
+            value: 'type',
+            content: {
+                type: newType
+            },
+            config: {
+                headers: {
+                    'auth-token': auth.token
                 }
             }
-            profileAPI.changeValue(data).then(
-                status => {
-                    if (status===0){
-                        dispatch(saveTypeSuccess(newType));
-                    }
-                }
-            )
+        }
+        status = await profileAPI.changeValue(data);
+        if (status === 0) {
+            dispatch(saveTypeSuccess(newType));
         }
     }
 }
 
-export const saveCity = (auth, newCity) => {
-    return (dispatch) => {
-        let data = null;
-        if (auth.isAuth){
-            data = {
-                auth: auth,
-                value: 'city',
-                content: {
-                    city: newCity
-                },
-                config:{
-                    headers: {
-                        'auth-token': auth.token
-                    }
+export const saveCity = (auth, newCity) => async (dispatch) => {
+    let data = null;
+    let status = null;
+    if (auth.isAuth) {
+        data = {
+            auth: auth,
+            value: 'city',
+            content: {
+                city: newCity
+            },
+            config: {
+                headers: {
+                    'auth-token': auth.token
                 }
             }
-            profileAPI.changeValue(data).then(
-                status => {
-                    if (status===0){
-                        dispatch(saveCitySuccess(newCity));
-                    }
-                }
-            )
+        }
+        status = await profileAPI.changeValue(data);
+        if (status === 0) {
+            dispatch(saveCitySuccess(newCity));
         }
     }
 }
 
-export const saveName = (auth, newName) => {
-    return (dispatch) => {
-        let data = null;
-        if (auth.isAuth){
-            data = {
-                auth: auth,
-                value: 'name',
-                content: {
-                    name: newName
-                },
-                config:{
-                    headers: {
-                        'auth-token': auth.token
-                    }
+export const saveName = (auth, newName) => async (dispatch) => {
+    let data = null;
+    let status = null;
+    if (auth.isAuth) {
+        data = {
+            auth: auth,
+            value: 'name',
+            content: {
+                name: newName
+            },
+            config: {
+                headers: {
+                    'auth-token': auth.token
                 }
             }
-            profileAPI.changeValue(data).then(
-                status => {
-                    if (status===0){
-                        dispatch(saveNameSuccess(newName));
-                    }
-                }
-            )
+        }
+        status = await profileAPI.changeValue(data);
+        if (status === 0) {
+            dispatch(saveNameSuccess(newName));
         }
     }
 }
 
-export const addPost = (auth, post) => {
-    return (dispatch) => {
-        if (auth.isAuth){
-            profileAPI.addPost({
-                config: {
-                    headers: {
-                        'auth-token': auth.token
-                    }
-                },
-                content: {
-                    post
+export const addPost = (auth, post) => async (dispatch) => {
+    let resultCode = null;
+    if (auth.isAuth) {
+        resultCode = await profileAPI.addPost({
+            config: {
+                headers: {
+                    'auth-token': auth.token
                 }
-            })
-                .then(resultCode => {
-                    if (resultCode === 0){
-                        dispatch(createPost(post));
-                        dispatch(reset('post'));
-                    }
-                });
+            },
+            content: {
+                post
+            }
+        })
+        if (resultCode === 0) {
+            dispatch(createPost(post));
+            dispatch(reset('post'));
         }
     }
 }
-export const removePost = (auth, postId) =>{
-    return (dispatch) => {
-        if (auth.isAuth){
-            profileAPI.removePost({
-                config: {
-                    headers: {
-                        'auth-token': auth.token
-                    }
-                },
-                id: postId
-            })
-                .then(resultCode => {
-                    if (resultCode === 0){
-                        dispatch(deletePost(postId));
-                    }
-                })
+export const removePost = (auth, postId) => async (dispatch) => {
+    let resultCode = null;
+    if (auth.isAuth) {
+        resultCode = await profileAPI.removePost({
+            config: {
+                headers: {
+                    'auth-token': auth.token
+                }
+            },
+            id: postId
+        });
+        if (resultCode === 0) {
+            dispatch(deletePost(postId));
         }
     }
 }

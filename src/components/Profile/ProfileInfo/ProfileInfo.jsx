@@ -5,25 +5,19 @@ import defaultPhotoMan from '../../../assets/images/defaultUserMan.png';
 import Preloader from "../../common/Preloader/Preloader";
 
 
-const ProfileInfo = (props) => {
-	if (!props.profile)
+const ProfileInfo = ({profile}) => {
+	if (!profile)
 		return <Preloader />
 	return (
 		<div>
-			{/*<div className={s.pro_logo}>
-				<img
-					src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-					alt={"=("}/>
-			</div>*/}
 			<div className={s.ava_description}>
 				<div className={s.profile_logo}><img
-					src={props.profile.photo === null ? defaultPhotoMan : props.profile.photo}
+					src={profile.photo === null ? defaultPhotoMan : profile.photo}
 					alt={"=("}/></div>
-				<ProfileSpecimen profile_name={props.profile.name === null ? "" : props.profile.name}
-								 profile_age={props.profile.age === null ? "" : props.profile.age}
-								 profile_sex={props.profile.type === null ? "" : props.profile.type}
-								 profile_city={props.profile.city === null ? "" : props.profile.city}
-								 //profile_status={props.profile.status === null ? "" : props.profile.status}
+				<ProfileSpecimen profile_name={profile.name === null ? "" : profile.name}
+								 profile_age={profile.age === null ? "" : profile.age}
+								 profile_sex={profile.type === null ? "" : profile.type}
+								 profile_city={profile.city === null ? "" : profile.city}
 				/>
 			</div>
 		</div>

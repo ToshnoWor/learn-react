@@ -1,8 +1,8 @@
 import {profileAPI, userAPI} from "../api/api";
 
-const REFRESH_DATA = 'REFRESH_DATA';
-const ADD_FRIEND = 'ADD_FRIEND';
-const UNFOLLOW = 'UNFOLLOW';
+const REFRESH_DATA = 'friends/REFRESH_DATA';
+const ADD_FRIEND = 'friends/ADD_FRIEND';
+const UNFOLLOW = 'friends/UNFOLLOW';
 
 let initialState = {
     userId: null,
@@ -14,7 +14,7 @@ let initialState = {
 }
 
 const friendsReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case REFRESH_DATA:
             return {
                 ...state,
@@ -28,7 +28,7 @@ const friendsReducer = (state = initialState, action) => {
         case UNFOLLOW:
             return {
                 ...state,
-                friends:  [...state.friends].filter(p =>{
+                friends: [...state.friends].filter(p => {
                     return p !== action.p;
                 })
             }
@@ -37,35 +37,29 @@ const friendsReducer = (state = initialState, action) => {
     }
 }
 
-export const refreshFriends = () =>
-    ({type: REFRESH_DATA });
+export const refreshFriends = () => ({type: REFRESH_DATA});
 export const addFriend = (friend) => ({type: ADD_FRIEND, friend});
 export const unfollowSuccess = (p) => ({type: UNFOLLOW, p});
 
-export const getFriends = (userId) => {
-    return (dispatch) => {
-        dispatch(refreshFriends());
-        if (userId)
-            profileAPI.getProfile(userId).then(r => {
-                if (r.status === 200)
-                    r.data[0].followers.map( p => {
-                        profileAPI.getProfile(p).then(r2 =>{
-                            dispatch(addFriend(r2.data[0]));
-                            }
-                        )
-                        return p;
-                    })
-            });
-    }
+export const getFriends = (userId) => async (dispatch) => {
+    let r = {};
+    let r2 = {};
+    dispatch(refreshFriends());
+
+    if (userId)
+        r = await profileAPI.getProfile(userId);
+    if (r.status === 200)
+        r.data.profile.followers.map(async p => {
+            r2 = await profileAPI.getProfile(p);
+            dispatch(addFriend(r2.data.profile));
+            return p;
+        })
 }
 
-export const unfollow = (auth, p) => {
-    return (dispatch) => {
-        userAPI.unfollow(auth, p._id).then(r => {
-            if (r.status === 200){
-                dispatch(unfollowSuccess(p));
-            }
-        });
+export const unfollow = (auth, p) => async (dispatch) => {
+    let r = await userAPI.unfollow(auth, p._id);
+    if (r?.data?.ressoltCode === 0) {
+        dispatch(unfollowSuccess(p));
     }
 }
 

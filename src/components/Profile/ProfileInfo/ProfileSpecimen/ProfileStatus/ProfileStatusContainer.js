@@ -1,22 +1,18 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {compose} from "redux";
-import ProfileStatus from "./ProfileStatus";
 import {saveStatus} from "../../../../../redux/profile-reducer";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-class ProfileStatusContainer extends React.Component{
-
-    render(){
-        return (
-            <ProfileStatusWithHooks
-                status={this.props.status}
-                saveStatus={this.props.saveStatus}
-                isAuth={this.props.isAuth}
-                auth={this.props.auth}
-            />
-        )
-    }
+function ProfileStatusContainer(props) {
+    return (
+        <ProfileStatusWithHooks
+            status={props.status}
+            saveStatus={props.saveStatus}
+            isAuth={props.isAuth}
+            auth={props.auth}
+        />
+    )
 }
 
 let mapStateToProps = (state) => ({

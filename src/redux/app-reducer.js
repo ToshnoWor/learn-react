@@ -22,7 +22,9 @@ const initializedSuccess = () => ({type:INITIALIZED_SUCCESS})
 
 export const initializeApp = () => (dispatch) => {
     const content={email: "alekseikoval69@gmail.com",password: "22446688al"}
+
     let promise = dispatch(auth(content));
+
     Promise.all([promise])
         .then(() => {
             dispatch(initializedSuccess());

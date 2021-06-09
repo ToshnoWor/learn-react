@@ -12,7 +12,6 @@ const ProfileSpecimen = (props) => {
 		<div className={s.description}>
 			<div>
 				<ChangeNameContainer/>
-				{/*props.profile_name*/}
 			</div>
 			<div>
 				<div className={s.details}>
