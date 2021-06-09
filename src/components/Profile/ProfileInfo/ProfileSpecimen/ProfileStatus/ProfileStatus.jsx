@@ -2,7 +2,7 @@ import React from 'react';
 import s from '../ProfileSpecimen.module.css'
 
 
-class ProfileStatus extends React.Component{
+class ProfileStatus extends React.Component {
     state = {
         editMode: false,
         status: this.props.status
@@ -23,7 +23,7 @@ class ProfileStatus extends React.Component{
         this.setState({status: e.currentTarget.value});
     }
 
-    saveStatus(){
+    saveStatus() {
         this.props.saveStatus(this.props.auth, this.state.status);
         this.deactivateEditMode();
     }
@@ -32,32 +32,36 @@ class ProfileStatus extends React.Component{
         return (
             < >
                 {!this.state.editMode &&
-                    <div
-                        onDoubleClick={
-                        this.props.isAuth ?
-                        this.activateEditMode :
-                            () => {alert("It's not your page!")}
-                    }>
-                        <span className={s.spanStatus}>
+                <div>
+                        <span
+                            className={s.spanStatus}
+                            onDoubleClick={
+                                this.props.isAuth ?
+                                    this.activateEditMode :
+                                    () => {
+                                        alert("It's not your page!")
+                                    }
+                            }>
                             {
                                 !this.state.status
-                                ? "Not status"
-                                :this.state.status
+                                    ? "Not status"
+                                    : this.state.status
                             }
                         </span>
-                    </div>
+                </div>
                 }
                 {this.state.editMode &&
-                    <div>
-                        <input className={s.inputStatus}
-                            autoFocus
-                            //onBlur={this.deactivateEditMode.bind(this)}
-                            onChange={this.updateStatus}
-                            value={this.state.status}
-                        />
-                        <button className={s.button}
-                            onClick={this.saveStatus.bind(this)}>Save</button>
-                    </div>
+                <div>
+                    <input className={s.inputStatus}
+                           autoFocus
+                        //onBlur={this.deactivateEditMode.bind(this)}
+                           onChange={this.updateStatus}
+                           value={this.state.status}
+                    />
+                    <button className={s.button}
+                            onClick={this.saveStatus.bind(this)}>Save
+                    </button>
+                </div>
                 }
             </>
         )

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import s from '../ProfileSpecimen.module.css';
 
 
-const ProfileStatusWithHooks  = (props) => {
+const ProfileStatusWithHooks = (props) => {
 
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
