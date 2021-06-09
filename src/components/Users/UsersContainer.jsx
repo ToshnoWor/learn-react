@@ -18,7 +18,7 @@ import {
 } from "../../redux/users-selectors";
 import {getAuth} from "../../redux/auth-selectors";
 
-class UsersContainer extends React.Component{
+class UsersContainer extends React.Component {
     componentDidMount() {
         let {currentPage, pageSize, auth} = this.props;
         this.props.getUser(currentPage, pageSize, auth);
@@ -31,23 +31,24 @@ class UsersContainer extends React.Component{
 
     render() {
         return <>
-            {this.props.isFetching ? <Preloader /> : null}
-                <Users
-                    totalUserCount={this.props.totalUserCount}
-                    pageSize={this.props.pageSize}
-                    currentPage={this.props.currentPage}
-                    onPageChanged={this.onPageChanged}
-                    users={this.props.users}
-                    unfollow={this.props.unfollow}
-                    follow={this.props.follow}
-                    auth={this.props.auth}
-                    getUser={this.getUser}
-                    toggleFollowingProgress={this.props.toggleFollowingProgress}
-                    followingInProgress={this.props.followingInProgress}
-                />
+            {this.props.isFetching ? <Preloader/> : null}
+            <Users
+                totalUserCount={this.props.totalUserCount}
+                pageSize={this.props.pageSize}
+                currentPage={this.props.currentPage}
+                onPageChanged={this.onPageChanged}
+                users={this.props.users}
+                unfollow={this.props.unfollow}
+                follow={this.props.follow}
+                auth={this.props.auth}
+                getUser={this.getUser}
+                toggleFollowingProgress={this.props.toggleFollowingProgress}
+                followingInProgress={this.props.followingInProgress}
+            />
         </>
     }
 }
+
 let mapStateToProps = (state) => {
     return {
         users: getUsers(state),
