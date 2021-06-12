@@ -1,4 +1,4 @@
-import {auth} from "./auth-reducer";
+//import {auth} from "./auth-reducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
@@ -21,9 +21,9 @@ const appReducer = (state = initialState, action) => {
 const initializedSuccess = () => ({type:INITIALIZED_SUCCESS})
 
 export const initializeApp = () => (dispatch) => {
-    const content={email: "alekseikoval69@gmail.com",password: "22446688al"}
+    //const content={email: "alekseikoval69@gmail.com",password: "22446688al"}
 
-    let promise = dispatch(auth(content));
+    let promise //= dispatch(auth(content));
 
     Promise.all([promise])
         .then(() => {

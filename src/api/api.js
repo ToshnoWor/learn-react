@@ -86,5 +86,8 @@ export const profileAPI = {
 export const authAPI = {
     auth(data) {
         return  instanceNotLogin.post("user/login", data);
-    }
+    },
+    singUp(data) {
+        return  instanceNotLogin.post("user/register", data);
+    },
 }

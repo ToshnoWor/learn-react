@@ -14,6 +14,7 @@ import './components/cssModule/button.module.css';
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const LoginContainer = React.lazy(() => import('./components/Login/LoginContainer'));
+const SingUpContainer = React.lazy(() => import('./components/SingUp/SingUpContainer'));
 const FriendsContainer = React.lazy(() => import('./components/Friends/FriendsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
@@ -40,6 +41,8 @@ class App extends React.Component {
                            render={withSuspense(FriendsContainer)}/>
                     <Route path='/login'
                            render={withSuspense(LoginContainer)}/>
+                    <Route path='/sing-up'
+                           render={withSuspense(SingUpContainer)}/>
                 </div>
             </div>
         );

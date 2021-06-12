@@ -3,7 +3,6 @@ import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const TOGGLE_IS_FETCHING = 'auth/TOGGLE_IS_FETCHING';
-const SET_ACCESS_TOKEN = 'auth/SET_ACCESS_TOKEN';
 const LOGOUT = 'auth/LOGOUT';
 
 let initialState = {
@@ -23,11 +22,6 @@ const authReducer = (state = initialState, action) => {
                 ...action.data,
                 isAuth: true
             }
-        case SET_ACCESS_TOKEN:
-            return {
-                ...state,
-                token: action.token
-            }
         case LOGOUT:
             return {
                 ...initialState
@@ -44,7 +38,7 @@ export const logout = () => ({type: LOGOUT})
 
 export const auth = (data) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-
+    debugger
     let r = await authAPI.auth(data);
 
     if (r.data.ressoltCode === 0) {
@@ -66,5 +60,12 @@ export const auth = (data) => async (dispatch) => {
     dispatch(toggleIsFetching(false));
 }
 
+export const singUp = (data) => async (dispatch) => {
+    let res = await authAPI.singUp(data);
+    if (res.data.resultCode === 0) {
+        let {_id, name, email, token} = res.data.item;
+        dispatch(setAuthUserData(_id,email,name,token));
+    }
+}
 
 export default authReducer;

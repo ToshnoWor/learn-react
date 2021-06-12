@@ -99,7 +99,7 @@ export const getProfile = (userId) => async (dispatch) => {
     if (userId)
         r = await profileAPI.getProfile(userId);
 
-    dispatch(setUserData({profile: r.data.profile, posts: r.data.posts}));
+    dispatch(setUserData({profile: r?.data?.profile, posts: r?.data?.posts}));
 }
 
 export const saveStatus = (auth, newStatus) => async (dispatch) => {
