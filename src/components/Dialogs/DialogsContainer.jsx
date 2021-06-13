@@ -1,31 +1,32 @@
-import {sendMessage} from "../../redux/message-reducer";
+import {selectCurrentDialog, sendMessage, setMessage} from "../../redux/message-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import React from "react";
 
-class DialogsContainer extends React.Component{
-
-    render() {
-        return <Dialogs
-            messagesPage={this.props.messagesPage}
-            sendMessage={this.props.sendMessage}
-        />
-    }
+function DialogsContainer(props) {
+    return <Dialogs
+        messagesPage={props.messagesPage}
+        sendMessage={props.sendMessage}
+        setMessage={props.setMessage}
+        auth={props.auth}
+        selectCurrentDialog={props.selectCurrentDialog}
+    />
 }
 
 let mapStateToProps = (state) => {
-
-
     return {
-        messagesPage: state.messagesPage
+        messagesPage: state.messagesPage,
+        auth: state.auth
     }
 };
 
 export default compose(
     connect(mapStateToProps, {
-        sendMessage
+        sendMessage,
+        setMessage,
+        selectCurrentDialog
     }),
     withAuthRedirect
 )(DialogsContainer);

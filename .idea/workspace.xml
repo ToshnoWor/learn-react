@@ -20,17 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86d4c74a-4a48-4619-af9b-aeee25314bb8" name="Default Changelist" comment="add test reducers">
-      <change afterPath="$PROJECT_DIR$/src/components/SingUp/SingUp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SingUp/SingUp.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SingUp/SingUpContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/app-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/app-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/DialogItem/DialogsItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/DialogItem/DialogsItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/auth-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profile-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/message-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/message-reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,14 +258,8 @@
       <workItem from="1623238197794" duration="28109000" />
       <workItem from="1623421786866" duration="8817000" />
       <workItem from="1623444297641" duration="606000" />
-      <workItem from="1623500469070" duration="5356000" />
-    </task>
-    <task id="LOCAL-00003" summary="add reducer">
-      <created>1587039700306</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1587039700306</updated>
+      <workItem from="1623500469070" duration="5565000" />
+      <workItem from="1623587272914" duration="10915000" />
     </task>
     <task id="LOCAL-00004" summary="add redux">
       <created>1587041946590</created>
@@ -606,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623443998107</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="add register">
+      <created>1623506008621</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1623506008621</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,7 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="HOC" />
     <MESSAGE value="compose" />
     <MESSAGE value="setState, local state" />
     <MESSAGE value="setState, local state, &#10;new api - change status" />
@@ -663,7 +660,8 @@
     <MESSAGE value="paginator for paginator" />
     <MESSAGE value="React.lazy &amp; React.Suspense" />
     <MESSAGE value="github pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="github pages" />
+    <MESSAGE value="add register" />
+    <option name="LAST_COMMIT_MESSAGE" value="add register" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

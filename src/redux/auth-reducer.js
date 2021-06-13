@@ -38,7 +38,6 @@ export const logout = () => ({type: LOGOUT})
 
 export const auth = (data) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    debugger
     let r = await authAPI.auth(data);
 
     if (r.data.ressoltCode === 0) {

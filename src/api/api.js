@@ -1,11 +1,14 @@
 import * as axios from "axios";
 
+//const baseURL = 'https://obscure-falls-49312.herokuapp.com/api/';
+const baseURL = 'http://localhost:3033/api/';
+
 const instanceLogin = axios.create({
     withCredentials: true,
-    baseURL: 'https://obscure-falls-49312.herokuapp.com/api/'
+    baseURL: baseURL
 });
 const instanceNotLogin = axios.create({
-    baseURL: 'https://obscure-falls-49312.herokuapp.com/api/'
+    baseURL: baseURL
 });
 
 export const userAPI = {
@@ -90,4 +93,14 @@ export const authAPI = {
     singUp(data) {
         return  instanceNotLogin.post("user/register", data);
     },
+}
+
+export const messageAPI = {
+    getMessage(data) {
+        return instanceLogin.get("profile/message/get", data.config).then(
+            r => {
+                return r.data;
+            }
+        );
+    }
 }
