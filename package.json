@@ -43,5 +43,8 @@
   "devDependencies": {
     "gh-pages": "^3.2.0",
     "react-test-renderer": "16.14.0"
+  },
+  "overrides": {
+    "node-forge": "1.4.3"
   }
 }
