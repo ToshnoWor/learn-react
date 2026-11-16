@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "homepage": "https://toshnowor.github.io/learn-react",
   "engines": {
     "node": ">=20.19.0"
@@ -33,6 +34,7 @@
     "gh-pages": "6.3.0",
     "jsdom": "31.0.1",
     "vite": "8.3.8",
-    "vitest": "5.1.0"
+    "vitest": "5.1.0",
+    "react-test-renderer": "16.14.0"
   }
 }
