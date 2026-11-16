@@ -6,6 +6,7 @@ export default defineConfig({
     plugins: [react()],
     oxc: {
         include: /src\/.*\.(js|jsx)$/,
+        lang: 'jsx',
         jsx: {
             runtime: 'classic',
         },
