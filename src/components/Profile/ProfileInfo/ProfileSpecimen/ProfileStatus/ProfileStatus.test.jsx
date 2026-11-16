@@ -1,14 +1,14 @@
 import React from "react";
 import {create} from "react-test-renderer";
 import ProfileStatus from "./ProfileStatus";
-import jest from "jest";
+import {vi} from "vitest";
 
 describe("ProfileStatus component", () => {
-    const mockCallback = jest.fn();
+    const mockCallback = vi.fn();
     const component = create(<ProfileStatus isAuth={true} status="text" saveStatus={mockCallback}/>);
     test("status from props should be in the state", () => {
         const instance = component.getInstance();
-        expect(instance.state.status).toBe("Status");
+        expect(instance.state.status).toBe("text");
     });
     test("after creation <span> should be displayed", () => {
         const root = component.root;
@@ -35,7 +35,7 @@ describe("ProfileStatus component", () => {
     });
     test("callback should be celled", () => {
         const instance = component.getInstance();
-        instance.deactivateEditMode();
+        instance.saveStatus();
         expect(mockCallback.mock.calls.length).toBe(1);
     });
 })

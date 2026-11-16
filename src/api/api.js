@@ -1,4 +1,4 @@
-import * as axios from "axios";
+import axios from "axios";
 
 //const baseURL = 'https://obscure-falls-49312.herokuapp.com/api/';
 const baseURL = 'http://localhost:3033/api/';
