@@ -3,48 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://toshnowor.github.io/learn-react",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "1.21.1",
     "classnames": "^2.3.1",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-form": "^8.3.7",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not ie <= 11",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
-    "gh-pages": "^3.2.0",
-    "react-test-renderer": "16.14.0"
-  },
-  "overrides": {
-    "node-forge": "1.4.3"
+    "@vitejs/plugin-react": "6.3.0",
+    "gh-pages": "6.3.0",
+    "jsdom": "31.0.1",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
   }
 }
