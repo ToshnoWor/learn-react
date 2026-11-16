@@ -1,14 +1,13 @@
 import axios from "axios";
 
-//const baseURL = 'https://obscure-falls-49312.herokuapp.com/api/';
-const baseURL = 'http://localhost:3033/api/';
+const baseURL = import.meta.env.VITE_API_BASE_URL || '/api/';
 
 const instanceLogin = axios.create({
     withCredentials: true,
-    baseURL: baseURL
+    baseURL
 });
 const instanceNotLogin = axios.create({
-    baseURL: baseURL
+    baseURL
 });
 
 export const userAPI = {
