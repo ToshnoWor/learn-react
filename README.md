@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# learn-react
 
-## Available Scripts
+A tutorial social-network application used to learn React and Redux by building real application features instead of isolated examples.
 
-In the project directory, you can run:
+The project intentionally keeps its historical React 16 and hand-written Redux architecture as an educational baseline. Recovery work focuses on making that baseline runnable and testable before any large modernization.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- authentication and registration
+- user profiles and editable profile fields
+- posts
+- users list and pagination
+- follow and unfollow
+- friends
+- dialogs/messages UI
+- Redux reducers, thunks, selectors and HOCs
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The dialogs/messages UI is incomplete because the backend does not yet provide a message model/API.
 
-### `npm test`
+## Requirements
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js 22+
+- matching `ToshnoWor/RestAPIServer` backend for API features
 
-### `npm run build`
+## Local development
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install dependencies:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```bash
+npm ci
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start Vite:
 
-### `npm run eject`
+```bash
+npm run dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+By default the frontend uses relative `/api/` requests and Vite proxies them to `http://127.0.0.1:3033`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To use another backend URL:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+VITE_API_BASE_URL=https://example.test/api/ npm run dev
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Tests and build
 
-## Learn More
+```bash
+npm test
+npm run build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+GitHub Actions runs tests, a production build and a production dependency audit for pull requests and pushes to `master`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## GitHub Codespaces demo
 
-### Code Splitting
+The matching backend repository contains the full-stack Codespaces environment. It starts Node.js 22, MongoDB 8, this frontend and the Express backend, while exposing only the Vite frontend port.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Create a Codespace from `ToshnoWor/RestAPIServer`, then run:
 
-### Analyzing the Bundle Size
+```bash
+npm run demo
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Open forwarded port `5173`. To share the demo, change that port to **Public** in the Codespaces Ports panel.
 
-### Making a Progressive Web App
+## GitHub Pages
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The Vite build still uses `/learn-react/` as its default production base path. A permanent GitHub Pages deployment is intentionally not enabled yet because the application currently has no permanent public backend; Codespaces is the working full-stack demo environment.
