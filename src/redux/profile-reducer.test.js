@@ -1,34 +1,56 @@
-import profileReducer, {createPost, deletePost} from "./profile-reducer";
-let state = {
+import profileReducer, {
+    createPost,
+    deletePost,
+    saveCitySuccess,
+    saveNameSuccess
+} from "./profile-reducer";
+
+const state = {
+    profile: {
+        name: 'Old Name',
+        city: 'Old City'
+    },
     posts: [
         'post 1',
         'post 2',
         'post 3'
     ]
 };
-it('length of posts should be incremented', () => {
-    // 1. test data
-    let action = createPost("text new post")
-    // 2. action
-    let  newState = profileReducer(state, action);
-    // 3. expectation
+
+it('increments the number of posts', () => {
+    const newState = profileReducer(state, createPost("text new post"));
+
     expect(newState.posts.length).toBe(4);
 });
 
-it('message of new post should be correct', () => {
-    // 1. test data
-    let action = createPost("text new post")
-    // 2. action
-    let  newState = profileReducer(state, action);
-    // 3. expectation
+it('stores the new post text', () => {
+    const newState = profileReducer(state, createPost("text new post"));
+
     expect(newState.posts[3]).toBe("text new post");
 });
 
-it('after deleting length of message should be decrement', () => {
-    // 1. test data
-    let action = deletePost(0);
-    // 2. action
-    let  newState = profileReducer(state, action);
-    // 3. expectation
+it('decrements the number of posts after deleting', () => {
+    const newState = profileReducer(state, deletePost(0));
+
     expect(newState.posts.length).toBe(2);
+});
+
+it('updates city without changing profile type', () => {
+    const newState = profileReducer(
+        {...state, profile: {...state.profile, type: 'user'}},
+        saveCitySuccess('Kyiv')
+    );
+
+    expect(newState.profile.city).toBe('Kyiv');
+    expect(newState.profile.type).toBe('user');
+});
+
+it('updates user name without changing profile type', () => {
+    const newState = profileReducer(
+        {...state, profile: {...state.profile, type: 'user'}},
+        saveNameSuccess('New Name')
+    );
+
+    expect(newState.profile.name).toBe('New Name');
+    expect(newState.profile.type).toBe('user');
 });

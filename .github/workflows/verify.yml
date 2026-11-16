@@ -1,9 +1,9 @@
-name: Vite migration checks
+name: Frontend checks
 
 on:
   push:
     branches:
-      - modernize/vite-security-cleanup
+      - master
   pull_request:
     branches:
       - master
