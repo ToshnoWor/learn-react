@@ -3,20 +3,11 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     base: '/learn-react/',
-    plugins: [
-        react({
-            include: /\.js$/,
-        }),
-    ],
-    esbuild: {
-        loader: 'jsx',
-        include: /src\/.*\.js$/,
-    },
-    optimizeDeps: {
-        esbuildOptions: {
-            loader: {
-                '.js': 'jsx',
-            },
+    plugins: [react()],
+    oxc: {
+        include: /src\/.*\.(js|jsx)$/,
+        jsx: {
+            runtime: 'classic',
         },
     },
     test: {
